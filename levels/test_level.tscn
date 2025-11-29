@@ -1,11 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnmjf8ylqqjhr"]
+[gd_scene load_steps=11 format=3 uid="uid://dnmjf8ylqqjhr"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_46lwt"]
 [ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="3_gmgay"]
 [ext_resource type="PackedScene" uid="uid://tfal2q2qqu0e" path="res://items/test_item.tscn" id="4_w7r7j"]
+[ext_resource type="PackedScene" uid="uid://dw6qwrqm6i7u8" path="res://levels/interactable/moving_platform.tscn" id="5_o6mel"]
+[ext_resource type="PackedScene" uid="uid://6ci323i4f7tr" path="res://items/bomb.tscn" id="5_ur00s"]
+[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/pressure_plate.tscn" id="6_e7anx"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_46lwt"]
+
+[sub_resource type="Curve2D" id="Curve2D_e7anx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 121, 3, 0, 0, 0, 0, 121, -228)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6mel"]
+size = Vector2(126, 28)
 
 [node name="TestLevel" instance=ExtResource("1_46lwt")]
 
@@ -27,8 +39,46 @@ is_player = true
 position = Vector2(0, -52)
 zoom = Vector2(2, 2)
 
-[node name="TestItem" parent="." index="4" instance=ExtResource("4_w7r7j")]
-position = Vector2(-278, -75)
+[node name="TestItem" parent="Items" index="0" instance=ExtResource("4_w7r7j")]
+position = Vector2(-317, -17)
 
-[node name="TestItem2" parent="." index="5" instance=ExtResource("4_w7r7j")]
+[node name="TestItem3" parent="Items" index="1" instance=ExtResource("4_w7r7j")]
+position = Vector2(-317, -52)
+
+[node name="TestItem4" parent="Items" index="2" instance=ExtResource("4_w7r7j")]
+position = Vector2(-316, -87)
+
+[node name="TestItem5" parent="Items" index="3" instance=ExtResource("4_w7r7j")]
+position = Vector2(-316, -123)
+
+[node name="TestItem6" parent="Items" index="4" instance=ExtResource("4_w7r7j")]
+position = Vector2(-316, -158)
+
+[node name="TestItem7" parent="Items" index="5" instance=ExtResource("4_w7r7j")]
+position = Vector2(-316, -158)
+
+[node name="TestItem2" parent="Items" index="6" instance=ExtResource("4_w7r7j")]
 position = Vector2(-234, -74)
+
+[node name="Bomb" parent="Items" index="7" instance=ExtResource("5_ur00s")]
+position = Vector2(-358, -15)
+
+[node name="Path2D" type="Path2D" parent="." index="5"]
+curve = SubResource("Curve2D_e7anx")
+
+[node name="MovingPlatform" parent="Path2D" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("5_o6mel")]
+position = Vector2(121, 3)
+switch = NodePath("../../PressurePlate")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/MovingPlatform" index="0"]
+scale = Vector2(1, 0.2421875)
+texture = ExtResource("2_x25rp")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D/MovingPlatform" index="1"]
+sync_to_physics = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/MovingPlatform/AnimatableBody2D" index="0"]
+shape = SubResource("RectangleShape2D_o6mel")
+
+[node name="PressurePlate" parent="." index="6" instance=ExtResource("6_e7anx")]
+position = Vector2(-131, 2)

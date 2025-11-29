@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://6ci323i4f7tr"]
+
+[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_amjlg"]
+[ext_resource type="Script" uid="uid://4jgqfk4bgoa3" path="res://items/bomb.gd" id="1_lnnoo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_amjlg"]
+radius = 14.0
+
+[node name="Bomb" type="RigidBody2D"]
+collision_layer = 4
+script = ExtResource("1_lnnoo")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.24115604, 0.24115604, 0.24115604, 1)
+position = Vector2(1.999999, -14.999999)
+rotation = 0.43392003
+scale = Vector2(0.025031628, 0.09970809)
+texture = ExtResource("1_amjlg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.24115604, 0.24115604, 0.24115604, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_amjlg")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.9886679, 0.5103827, 0, 1)
+position = Vector2(4, -20.000002)
+rotation = 0.43392003
+scale = Vector2(0.037462853, 0.03644002)
+texture = ExtResource("1_amjlg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_amjlg")
+
+[node name="Fuze" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[connection signal="timeout" from="Fuze" to="." method="_on_fuze_timeout"]

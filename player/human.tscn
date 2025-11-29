@@ -118,6 +118,7 @@ shape = SubResource("CapsuleShape2D_3kgn4")
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("5_1ou5u")
+throw_force = Vector2(800, -400)
 
 [node name="Hand" type="Marker2D" parent="Flipper/ItemPicker"]
 position = Vector2(-28, -54)

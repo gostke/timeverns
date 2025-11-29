@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw6qwrqm6i7u8"]
+
+[ext_resource type="Script" uid="uid://dssm3swcv1nl5" path="res://levels/interactable/moving_platform.gd" id="1_l3muf"]
+
+[node name="MovingPlatform" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_l3muf")
+speed = 2.0
