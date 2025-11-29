@@ -1,24 +1,109 @@
-[gd_scene load_steps=4 format=3 uid="uid://efahif683vjg"]
+[gd_scene load_steps=14 format=3 uid="uid://efahif683vjg"]
 
 [ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
-[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_e2l5h"]
+[ext_resource type="Texture2D" uid="uid://b6s61xwevelc0" path="res://sprites/CHARACTER SPRITES.png" id="2_uuleo"]
+[ext_resource type="Script" uid="uid://tjdjrpe7ukdo" path="res://player/shadows.gd" id="3_uuleo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuleo"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(58, 1283, 581, 950)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxbag"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(804, 0, 680, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u86na"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(50, 0, 680, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icdvv"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(50, 1150, 680, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ou5u"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(50, 1150, 680, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54xnq"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(804, 1150, 680, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgf6f"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(1558, 1150, 680, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4p61"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(2312, 1150, 680, 1150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vgf6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxbag")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u86na")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icdvv")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ou5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54xnq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgf6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4p61")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kgn4"]
+radius = 20.0
+height = 88.0
 
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_3kgn4")
-speed = 200.0
-jump_force = 200.0
-mass = 8.0
+jump_force = 5.0
+mass = 2.0
 drag = 0.2
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-5.9604645e-08, 0.4999981)
-scale = Vector2(0.15625, 0.2421875)
-texture = ExtResource("1_e2l5h")
+[node name="Traces" type="Node2D" parent="."]
+script = ExtResource("3_uuleo")
+trace_division = 20
+text_temp = SubResource("AtlasTexture_uuleo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.9999998, -52)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_vgf6f")
+animation = &"fall"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -46)
 shape = SubResource("CapsuleShape2D_3kgn4")
 
 [node name="CloneTimer" type="Timer" parent="."]

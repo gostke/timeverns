@@ -19,6 +19,12 @@ config/icon="res://icon.svg"
 
 LevelManager="*res://levels/level_manager.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+
 [editor_plugins]
 
 enabled=PackedStringArray()

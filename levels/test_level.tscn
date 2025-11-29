@@ -23,5 +23,5 @@ position = Vector2(-20, -28)
 is_player = true
 
 [node name="Camera2D" type="Camera2D" parent="Human" index="3"]
-position = Vector2(1, -37)
-zoom = Vector2(2.5, 2.5)
+position = Vector2(0, -52)
+zoom = Vector2(2, 2)
