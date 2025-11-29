@@ -112,10 +112,6 @@ autoplay = "stand"
 position = Vector2(1, -46)
 shape = SubResource("CapsuleShape2D_3kgn4")
 
-[node name="CloneTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [node name="Flipper" parent="." instance=ExtResource("4_icdvv")]
 
 [node name="ItemPicker" type="Area2D" parent="Flipper"]
@@ -130,4 +126,14 @@ position = Vector2(-28, -54)
 position = Vector2(-38.5, -46.5)
 shape = SubResource("RectangleShape2D_uuleo")
 
-[connection signal="timeout" from="CloneTimer" to="." method="_on_clone_timer_timeout"]
+[node name="Timers" type="Node" parent="."]
+
+[node name="CloneTimer" type="Timer" parent="Timers"]
+wait_time = 3.0
+one_shot = true
+
+[node name="DropTimer" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timers/CloneTimer" to="." method="_on_clone_timer_timeout"]

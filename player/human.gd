@@ -10,7 +10,8 @@ class_name Human
 
 const SPEED_MULTIPLIER: float = 100
 
-@onready var clone_timer: Timer = $CloneTimer
+@onready var clone_timer: Timer = $Timers/CloneTimer
+@onready var drop_timer: Timer = $Timers/DropTimer
 @onready var human_scene:= preload("uid://efahif683vjg")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -37,8 +38,8 @@ func summon_clone() -> void:
 	clone.frames = frames.duplicate(true)
 	add_sibling(clone)
 	clone.global_position = clone.frames[0].global_pos
-	clone.get_node("CloneTimer").start()
-	$CloneTimer.start()
+	clone.get_node("Timers/CloneTimer").start()
+	clone_timer.start()
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("clone") and is_player:
@@ -105,10 +106,15 @@ func jumping(frame: Frame) -> void:
 		frame.add_action(new_action)
 
 func interacting(frame: Frame) -> void:
-	if Input.is_action_just_pressed("use"):
-		use_and_add_action(ActionPickItem.new(), frame)
 	if Input.is_action_just_pressed("drop"):
-		use_and_add_action(ActionDropItem.new(), frame)
+		drop_timer.start()
+	if Input.is_action_just_released("drop"):
+		if drop_timer.is_stopped():
+			use_and_add_action(ActionThrowItem.new(), frame)
+		else:
+			use_and_add_action(ActionDropItem.new(), frame)
+	if Input.is_action_just_pressed("use"):
+			use_and_add_action(ActionPickItem.new(), frame)
 		
 func use_and_add_action(action: Action, frame: Frame) -> void:
 	action.use(self)

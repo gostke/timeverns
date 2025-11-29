@@ -1,6 +1,8 @@
 extends Area2D
 class_name ItemPicker
 
+@export var throw_force: float = 10
+
 @onready var hand: Marker2D = $Hand
 @onready var human: Human = $"../.."
 
@@ -19,13 +21,13 @@ func pick_up() -> void:
 	if items.is_empty():
 		return
 	items.sort_custom(func(lhs, rhs): 
-		return lhs.global_position.distance_to(human.global_position) > rhs.global_position.distance_to(human.global_position)
+		return lhs.global_position.distance_to(human.global_position) < rhs.global_position.distance_to(human.global_position)
 		)
 	var new_item: Item = null
 	for it in items:
 		if !it.picked:
 			new_item = it
-			breaka
+			break
 	if !new_item:
 		return
 	item = new_item
@@ -42,6 +44,11 @@ func drop() -> void:
 		item.freeze = false
 		item.apply_central_impulse(human.velocity * human.SPEED_MULTIPLIER)
 		item = null
+
+func throw() -> void:
+	if item:
+		item.apply_central_impulse(Vector2.RIGHT * throw_force * 100)
+		drop()
 
 func reset() -> void:
 	drop()

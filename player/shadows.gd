@@ -6,7 +6,7 @@ var traces: Array[Sprite2D]
 @onready var trace_count: int
 @export var text_temp: Texture
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../AnimatedSprite2D"
-@onready var clone_timer: Timer = $"../CloneTimer"
+@onready var clone_timer: Timer = $"../Timers/CloneTimer"
 
 func _ready() -> void:
 	if !human.is_player:

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="timeverns"
-run/main_scene="uid://dnmjf8ylqqjhr"
+run/main_scene="uid://cxsx1lcvou6nm"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,7 +23,6 @@ LevelManager="*res://levels/level_manager.tscn"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-
 
 [editor_plugins]
 

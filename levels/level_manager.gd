@@ -11,8 +11,5 @@ var levels: Dictionary = {
 	2 : level_2
 }
 
-func _ready() -> void:
-	get_tree().change_scene_to_packed(levels[1])
-
 func change_level(next_level_id: int) -> void:
 	get_tree().change_scene_to_packed(levels[next_level_id])
