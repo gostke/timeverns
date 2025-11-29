@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq14l4vblqgal"]
+
+[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_23jca"]
+[ext_resource type="Script" uid="uid://be4rfh63eyhtl" path="res://levels/interactable/bomb_spawner.gd" id="1_qs4pr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs4pr"]
+size = Vector2(64, 65)
+
+[node name="BombSpawner" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_qs4pr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_23jca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_qs4pr")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
