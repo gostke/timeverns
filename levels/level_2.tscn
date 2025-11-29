@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_0srwa"]
 [ext_resource type="Texture2D" uid="uid://bdxcgeu0tvdwf" path="res://sprites/FLOOR 2.png" id="2_5722l"]
 [ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="2_v5uil"]
-[ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/door.tscn" id="3_0srwa"]
+[ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/door.tscn" id="3_0srwa"]
 [ext_resource type="Texture2D" uid="uid://be7sbf68iy3vj" path="res://sprites/FLOOR 1.png" id="6_ilhis"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5722l"]

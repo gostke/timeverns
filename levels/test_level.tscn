@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="3_gmgay"]
 [ext_resource type="PackedScene" uid="uid://tfal2q2qqu0e" path="res://items/test_item.tscn" id="4_w7r7j"]
 [ext_resource type="PackedScene" uid="uid://dw6qwrqm6i7u8" path="res://levels/interactable/moving_platform.tscn" id="5_o6mel"]
-[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/pressure_plate.tscn" id="6_e7anx"]
+[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="6_e7anx"]
 [ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="8_wndkh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_46lwt"]
