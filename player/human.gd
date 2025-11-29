@@ -22,8 +22,9 @@ func summon_clone() -> void:
 	var clone: Human = human_scene.instantiate()
 	# deep copy
 	clone.frames = frames.duplicate(true)
-	clone.global_position = clone.frames[0].global_pos
 	add_sibling(clone)
+	clone.global_position = clone.frames[0].global_pos
+	clone.get_node("CloneTimer").start()
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("clone") and is_player:
@@ -71,3 +72,7 @@ func handle_clone() -> void:
 	if frames.is_empty():
 		return
 	frames.pop_front().run_actions(self)
+
+
+func _on_clone_timer_timeout() -> void:
+	call_deferred("queue_free")

@@ -6,6 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kgn4"]
 
 [node name="Human" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_3kgn4")
 speed = 200.0
 jump_force = 200.0
@@ -22,3 +23,6 @@ shape = SubResource("CapsuleShape2D_3kgn4")
 
 [node name="CloneTimer" type="Timer" parent="."]
 wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="CloneTimer" to="." method="_on_clone_timer_timeout"]
