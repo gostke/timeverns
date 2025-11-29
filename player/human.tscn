@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://efahif683vjg"]
+
+[ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
+[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_e2l5h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kgn4"]
+
+[node name="Human" type="CharacterBody2D"]
+script = ExtResource("1_3kgn4")
+speed = 200.0
+jump_force = 200.0
+mass = 8.0
+drag = 0.2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.9604645e-08, 0.4999981)
+scale = Vector2(0.15625, 0.2421875)
+texture = ExtResource("1_e2l5h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3kgn4")
+
+[node name="CloneTimer" type="Timer" parent="."]
+wait_time = 3.0

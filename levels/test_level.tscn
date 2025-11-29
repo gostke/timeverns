@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnmjf8ylqqjhr"]
+
+[ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_46lwt"]
+[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="2_x25rp"]
+[ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="3_gmgay"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_46lwt"]
+
+[node name="TestLevel" instance=ExtResource("1_46lwt")]
+
+[node name="Ground" type="StaticBody2D" parent="." index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" index="0"]
+shape = SubResource("WorldBoundaryShape2D_46lwt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+position = Vector2(0.50001526, 65)
+scale = Vector2(11.7578125, 1)
+texture = ExtResource("2_x25rp")
+
+[node name="Human" parent="." index="2" instance=ExtResource("3_gmgay")]
+position = Vector2(-20, -28)
+is_player = true
+
+[node name="Camera2D" type="Camera2D" parent="Human" index="3"]
+position = Vector2(1, -37)
+zoom = Vector2(2.5, 2.5)

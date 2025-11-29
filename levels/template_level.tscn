@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cwisekllj2ety"]
+
+[node name="TemplateLevel" type="Node2D"]
+
+[node name="Entities" type="Node2D" parent="."]
