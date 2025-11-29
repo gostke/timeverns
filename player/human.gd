@@ -42,7 +42,7 @@ func summon_clone() -> void:
 	clone_timer.start()
 	
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("clone") and is_player:
+	if Input.is_action_just_pressed("clone_1") and is_player:
 		summon_clone()
 	
 	if !is_zero_approx(velocity.x):

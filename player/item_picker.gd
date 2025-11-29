@@ -1,20 +1,16 @@
 extends Area2D
 class_name ItemPicker
 
-@export var throw_force: float = 10
+@export var throw_force: Vector2 = Vector2.RIGHT
 
 @onready var hand: Marker2D = $Hand
 @onready var human: Human = $"../.."
+@onready var flipper: Flipper = $".."
 
 var item: Item = null
 
 func _ready() -> void:
 	human.on_loop_reset.connect(reset)
-
-func use_item() -> void:
-	if !item:
-		return
-	item.use()
 
 func pick_up() -> void:
 	var items:= get_overlapping_bodies()
@@ -39,16 +35,22 @@ func pick_up() -> void:
 	
 func drop() -> void:
 	if item:
-		item.reparent(get_tree().current_scene.get_node("Items"))
-		item.picked = false
-		item.freeze = false
-		item.apply_central_impulse(human.velocity * human.SPEED_MULTIPLIER)
-		item = null
+		remove_item().apply_central_impulse(human.velocity * human.SPEED_MULTIPLIER)
+
+func remove_item() -> Item:
+	item.reparent(get_tree().current_scene.get_node("Items"))
+	item.picked = false
+	item.freeze = false
+	var old_item := item
+	item = null
+	return old_item
 
 func throw() -> void:
 	if item:
-		item.apply_central_impulse(Vector2.RIGHT * throw_force * 100)
-		drop()
+		var throw_dir := Vector2(1, 1)
+		if !flipper.flipped:
+			throw_dir.x = -1
+		remove_item().apply_central_impulse(throw_force * throw_dir)
 
 func reset() -> void:
 	drop()
