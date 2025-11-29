@@ -36,7 +36,6 @@ position = Vector2(-412, -33)
 
 [node name="Human" parent="." index="3" instance=ExtResource("3_gmgay")]
 position = Vector2(-20, -28)
-is_player = true
 
 [node name="Camera2D" type="Camera2D" parent="Human" index="3"]
 position = Vector2(0, -52)

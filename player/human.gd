@@ -20,6 +20,8 @@ const SPEED_MULTIPLIER: float = 100
 var frames: Array[Frame]
 var curr_frame: int = 0
 
+var clones: Array[Human] = [null, null, null]
+
 @onready var flipper: Flipper = $Flipper
 @onready var item_picker: ItemPicker = $Flipper/ItemPicker
 
@@ -29,22 +31,33 @@ func _ready() -> void:
 	clone_timer.start()
 	frames.resize(frame_count)
 
-func summon_clone() -> void:
+func summon_clone(idx: int) -> void:
 	if !clone_timer.is_stopped():
 		return
 	assert(is_player)
+	if clones[idx]:
+		clones[idx].call_deferred("queue_free")
+		clones[idx] = null
 	var clone: Human = human_scene.instantiate()
 	# deep copy
 	clone.frames = frames.duplicate(true)
 	clone.is_player = false
 	add_sibling(clone)
 	clone.global_position = clone.frames[0].global_pos
+	clone.flipper.flipped = clone.frames[0].flipped
+	clone.sprite.flip_h = clone.frames[0].flipped
 	clone.get_node("Timers/CloneTimer").start()
+	clones[idx] = clone
 	clone_timer.start()
 	
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("clone_1") and is_player:
-		summon_clone()
+	if is_player:
+		if Input.is_action_just_pressed("clone_0"):
+			summon_clone(0)
+		if Input.is_action_just_pressed("clone_1"):
+			summon_clone(1)
+		if Input.is_action_just_pressed("clone_2"):
+			summon_clone(2)
 	
 	if !is_zero_approx(velocity.x):
 		if velocity.x < 0:
@@ -85,6 +98,7 @@ func handle_player() -> void:
 	movement(new_frame)
 	jumping(new_frame)
 	interacting(new_frame)
+	new_frame.flipped = flipper.flipped
 	
 	frames.push_back(new_frame)
 	if frames.size() >= frame_count:
@@ -133,3 +147,6 @@ func handle_clone() -> void:
 		on_loop_reset.emit()
 		curr_frame = 0
 		global_position = frames[0].global_pos
+		flipper.flip(frames[0].flipped)
+		sprite.flip_h = frames[0].flipped
+		
