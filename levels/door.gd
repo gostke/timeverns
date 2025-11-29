@@ -1,6 +1,6 @@
 extends Area2D
 
-var is_open: bool = false
+@export var is_open: bool = false
 @export var next_level_id:int 
 	
 func _on_body_entered(_body: Node2D) -> void:

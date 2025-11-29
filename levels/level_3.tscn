@@ -1,59 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cuhcjtcc4baiu"]
+[gd_scene load_steps=3 format=3 uid="uid://cuhcjtcc4baiu"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_lfnxh"]
-[ext_resource type="Script" uid="uid://cb4luq5s1mgst" path="res://levels/level_1.gd" id="2_ofchu"]
-[ext_resource type="Texture2D" uid="uid://bdxcgeu0tvdwf" path="res://sprites/FLOOR 2.png" id="3_jq78i"]
 [ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="4_lsnkt"]
-[ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/door.tscn" id="5_wj73x"]
-[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="6_0unm6"]
-[ext_resource type="Texture2D" uid="uid://be7sbf68iy3vj" path="res://sprites/FLOOR 1.png" id="7_q42ux"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vn7o3"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_btoec"]
-size = Vector2(33, 33)
-
-[node name="Level3" instance=ExtResource("1_lfnxh")]
-script = ExtResource("2_ofchu")
-
-[node name="WorldFloor" type="StaticBody2D" parent="." index="1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor" index="0"]
-position = Vector2(621, 651)
-scale = Vector2(-6.72764, 1.4730161)
-shape = SubResource("WorldBoundaryShape2D_vn7o3")
-
-[node name="FloorSecond" type="Sprite2D" parent="WorldFloor" index="1"]
-position = Vector2(938.21155, 374)
-scale = Vector2(0.7621648, 0.7346154)
-texture = ExtResource("3_jq78i")
+[node name="level3" instance=ExtResource("1_lfnxh")]
 
 [node name="Human" parent="." index="2" instance=ExtResource("4_lsnkt")]
-position = Vector2(76, 631)
 is_player = true
-
-[node name="Camera2D" type="Camera2D" parent="Human" index="3"]
-zoom = Vector2(1.6, 1.6)
-
-[node name="Environment" type="Node2D" parent="." index="3"]
-
-[node name="Door" parent="Environment" index="0" instance=ExtResource("5_wj73x")]
-position = Vector2(792, 662)
-next_level_id = 2
-
-[node name="Sprite2D" parent="Environment/Door" index="0"]
-position = Vector2(1149.8767, -69.20142)
-scale = Vector2(1.1855743, 1.0437279)
-texture = ExtResource("6_0unm6")
-
-[node name="CollisionShape2D" parent="Environment/Door" index="1"]
-position = Vector2(1149.8768, -69.201416)
-scale = Vector2(4.33581, 3.817059)
-shape = SubResource("RectangleShape2D_btoec")
-
-[node name="FloorFIrst" type="Sprite2D" parent="." index="5"]
-position = Vector2(926.9999, 213.00002)
-scale = Vector2(0.818028, 0.9701322)
-texture = ExtResource("7_q42ux")
-
-[editable path="Environment/Door"]
