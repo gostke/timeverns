@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwisekllj2ety"]
+[gd_scene load_steps=9 format=3 uid="uid://cwisekllj2ety"]
 
+[ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="1_ktgux"]
 [ext_resource type="TileSet" uid="uid://caeb4spg26enr" path="res://levels/tilesett.tres" id="1_wxtcu"]
 [ext_resource type="Texture2D" uid="uid://bdxcgeu0tvdwf" path="res://sprites/FLOOR 2.png" id="2_8dr53"]
 [ext_resource type="Texture2D" uid="uid://be7sbf68iy3vj" path="res://sprites/FLOOR 1.png" id="2_8424m"]
@@ -14,6 +15,12 @@ background_mode = 1
 [node name="TemplateLevel" type="Node2D"]
 
 [node name="Entities" type="Node2D" parent="."]
+
+[node name="Human" parent="Entities" instance=ExtResource("1_ktgux")]
+
+[node name="Camera2D" type="Camera2D" parent="Entities/Human"]
+position = Vector2(0, -64)
+zoom = Vector2(1.5, 1.5)
 
 [node name="Items" type="Node2D" parent="."]
 
