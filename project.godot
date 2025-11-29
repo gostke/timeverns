@@ -15,14 +15,19 @@ run/main_scene="uid://dnmjf8ylqqjhr"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+LevelManager="*res://levels/level_manager.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
