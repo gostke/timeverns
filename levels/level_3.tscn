@@ -6,6 +6,7 @@
 [node name="level3" instance=ExtResource("1_lfnxh")]
 
 [node name="Human" parent="." index="2" instance=ExtResource("4_lsnkt")]
+position = Vector2(-519, -27)
 
 [node name="Camera2D" type="Camera2D" parent="Human" index="5"]
 zoom = Vector2(1.6, 1.6)
