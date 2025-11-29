@@ -25,7 +25,7 @@ func pick_up() -> void:
 	for it in items:
 		if !it.picked:
 			new_item = it
-			break
+			breaka
 	if !new_item:
 		return
 	item = new_item
