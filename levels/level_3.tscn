@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuhcjtcc4baiu"]
+
+[ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_lfnxh"]
+[ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="4_lsnkt"]
+
+[node name="level3" instance=ExtResource("1_lfnxh")]
+
+[node name="Human" parent="." index="2" instance=ExtResource("4_lsnkt")]
+is_player = true
