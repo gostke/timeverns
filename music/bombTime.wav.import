@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://drx0ecgj2fpbl"
-path="res://.godot/imported/szur1.wav-5508255126f7f640a467e4adc753954a.sample"
+uid="uid://b3tnmutp6dn6t"
+path="res://.godot/imported/bombTime.wav-fb29f73ea934ecd6586a68739107ce4c.sample"
 
 [deps]
 
-source_file="res://music/szur1.wav"
-dest_files=["res://.godot/imported/szur1.wav-5508255126f7f640a467e4adc753954a.sample"]
+source_file="res://music/bombTime.wav"
+dest_files=["res://.godot/imported/bombTime.wav-fb29f73ea934ecd6586a68739107ce4c.sample"]
 
 [params]
 

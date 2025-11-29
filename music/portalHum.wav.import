@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://drx0ecgj2fpbl"
-path="res://.godot/imported/szur1.wav-5508255126f7f640a467e4adc753954a.sample"
+uid="uid://di6eib26wqxdo"
+path="res://.godot/imported/portalHum.wav-b0ed2c71a43ef5f063851f5719ad736a.sample"
 
 [deps]
 
-source_file="res://music/szur1.wav"
-dest_files=["res://.godot/imported/szur1.wav-5508255126f7f640a467e4adc753954a.sample"]
+source_file="res://music/portalHum.wav"
+dest_files=["res://.godot/imported/portalHum.wav-b0ed2c71a43ef5f063851f5719ad736a.sample"]
 
 [params]
 

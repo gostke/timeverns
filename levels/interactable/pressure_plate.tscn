@@ -1,25 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbro1fup3i8uv"]
+[gd_scene load_steps=6 format=3 uid="uid://cbro1fup3i8uv"]
 
-[ext_resource type="Script" uid="uid://dfvdwpkrwn0wx" path="res://levels/pressure_plate.gd" id="1_n667r"]
-[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_xaqss"]
+[ext_resource type="Script" uid="uid://dfvdwpkrwn0wx" path="res://levels/interactable/pressure_plate.gd" id="1_n667r"]
+[ext_resource type="Texture2D" uid="uid://b05d5csjw8ghq" path="res://sprites/OBJECTS.png" id="2_2hrdp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bef3c"]
+atlas = ExtResource("2_2hrdp")
+region = Rect2(1601.5922, 347.1053, 241.1842, 109.30264)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hrdp"]
+atlas = ExtResource("2_2hrdp")
+region = Rect2(1846.2365, 359.57828, 242.11731, 83.971344)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaqss"]
-size = Vector2(41, 8)
+size = Vector2(220, 31)
 
 [node name="PressurePlate" type="StaticBody2D"]
 script = ExtResource("1_n667r")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, -2.7500029)
-scale = Vector2(0.89665747, 0.2304688)
-texture = ExtResource("1_xaqss")
+[node name="Unpressed" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bef3c")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-54, 12, -21, -17, 1.9224396, -17.000004, 25, -17, 55, 12)
+[node name="Pressed" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_2hrdp")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, -5)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.5, -23)
+position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_xaqss")
