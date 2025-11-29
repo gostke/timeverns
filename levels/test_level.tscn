@@ -28,4 +28,7 @@ position = Vector2(0, -52)
 zoom = Vector2(2, 2)
 
 [node name="TestItem" parent="." index="4" instance=ExtResource("4_w7r7j")]
-position = Vector2(-283, -70)
+position = Vector2(-278, -75)
+
+[node name="TestItem2" parent="." index="5" instance=ExtResource("4_w7r7j")]
+position = Vector2(-234, -74)
