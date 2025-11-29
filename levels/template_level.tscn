@@ -3,3 +3,5 @@
 [node name="TemplateLevel" type="Node2D"]
 
 [node name="Entities" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]

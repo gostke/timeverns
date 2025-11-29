@@ -19,6 +19,11 @@ const SPEED_MULTIPLIER: float = 100
 var frames: Array[Frame]
 var curr_frame: int = 0
 
+@onready var flipper: Flipper = $Flipper
+@onready var item_picker: ItemPicker = $Flipper/ItemPicker
+
+signal on_loop_reset
+
 func _ready() -> void:
 	clone_timer.start()
 	frames.resize(frame_count)
@@ -42,8 +47,10 @@ func _process(_delta: float) -> void:
 	if !is_zero_approx(velocity.x):
 		if velocity.x < 0:
 			sprite.flip_h = false
+			flipper.flip(false)
 		else:
 			sprite.flip_h = true
+			flipper.flip(true)
 		# sin
 		sprite.play("walk")
 	else:
@@ -75,6 +82,7 @@ func handle_player() -> void:
 	
 	movement(new_frame)
 	jumping(new_frame)
+	interacting(new_frame)
 	
 	frames.push_back(new_frame)
 	if frames.size() >= frame_count:
@@ -95,6 +103,16 @@ func jumping(frame: Frame) -> void:
 		var new_action: ActionJump = ActionJump.new()
 		new_action.use(self)
 		frame.add_action(new_action)
+
+func interacting(frame: Frame) -> void:
+	if Input.is_action_just_pressed("use"):
+		use_and_add_action(ActionPickItem.new(), frame)
+	if Input.is_action_just_pressed("drop"):
+		use_and_add_action(ActionDropItem.new(), frame)
+		
+func use_and_add_action(action: Action, frame: Frame) -> void:
+	action.use(self)
+	frame.add_action(action)
 	
 func handle_clone() -> void:
 	if frames.is_empty():
@@ -102,5 +120,6 @@ func handle_clone() -> void:
 	frames[curr_frame].run_actions(self)
 	curr_frame += 1
 	if curr_frame >= frame_count:
+		on_loop_reset.emit()
 		curr_frame = 0
 		global_position = frames[0].global_pos
