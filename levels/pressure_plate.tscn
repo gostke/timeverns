@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbro1fup3i8uv"]
+
+[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_xaqss"]
+
+[node name="PressurePlate" type="StaticBody2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -2.7500029)
+scale = Vector2(0.89665747, 0.2304688)
+texture = ExtResource("1_xaqss")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-54, 12, -21, -17, 25, -17, 55, 12)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -74)

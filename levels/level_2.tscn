@@ -19,10 +19,15 @@ size = Vector2(34, 36)
 [node name="Level2" instance=ExtResource("1_0srwa")]
 position = Vector2(-52, 19)
 
-[node name="Entities" parent="." index="0"]
+[node name="Human" parent="." index="0" instance=ExtResource("2_v5uil")]
+position = Vector2(163, 606)
+
+[node name="Camera2D" type="Camera2D" parent="Human" index="3"]
+
+[node name="Entities" parent="." index="1"]
 position = Vector2(51, -22)
 
-[node name="WorldFloor" type="StaticBody2D" parent="." index="1"]
+[node name="WorldFloor" type="StaticBody2D" parent="." index="2"]
 position = Vector2(51, -21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor" index="0"]
@@ -31,13 +36,6 @@ scale = Vector2(-6.72764, 1.4730161)
 shape = SubResource("WorldBoundaryShape2D_vn7o3")
 
 [node name="Sprite2D" type="Sprite2D" parent="WorldFloor" index="1"]
-
-[node name="Human" parent="." index="2" instance=ExtResource("2_v5uil")]
-position = Vector2(90, 610)
-is_player = true
-
-[node name="Camera2D" type="Camera2D" parent="Human" index="3"]
-zoom = Vector2(1.6, 1.6)
 
 [node name="Environment" type="Node2D" parent="." index="3"]
 position = Vector2(51, -20)

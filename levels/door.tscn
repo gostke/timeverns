@@ -6,7 +6,6 @@
 visibility_layer = 2
 collision_mask = 2
 script = ExtResource("1_xc1x7")
-next_level_id = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

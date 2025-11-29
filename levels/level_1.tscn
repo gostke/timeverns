@@ -8,10 +8,10 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vn7o3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx6l7"]
-size = Vector2(21.590908, 3.9772453)
+size = Vector2(62.49999, 19.318165)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt44k"]
-size = Vector2(51.136368, 3.9772768)
+size = Vector2(162.49995, 12.499988)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n46q3"]
 size = Vector2(50.56817, 3.9772727)
@@ -45,32 +45,47 @@ zoom = Vector2(1.6, 1.6)
 position = Vector2(261, 610)
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/MapTiles/StaticBody2D" index="0"]
-position = Vector2(0, -1.3959893)
-scale = Vector2(0.32456505, 0.068687685)
+position = Vector2(231.38608, -75.10401)
+scale = Vector2(0.89665747, 0.2578126)
 texture = ExtResource("3_bt44k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/MapTiles/StaticBody2D" index="1"]
 visibility_layer = 2
-position = Vector2(0, -1.5)
+position = Vector2(231.38608, -75.604004)
 scale = Vector2(1.7600002, 1.7600002)
 shape = SubResource("RectangleShape2D_kx6l7")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Environment/MapTiles" index="1"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Environment/MapTiles" index="1"]
+position = Vector2(47, 706)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/MapTiles/StaticBody2D4" index="0"]
+position = Vector2(231.38608, -75.10401)
+scale = Vector2(0.89665747, 0.2578126)
+texture = ExtResource("3_bt44k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/MapTiles/StaticBody2D4" index="1"]
+visibility_layer = 2
+position = Vector2(231.38608, -75.604004)
+scale = Vector2(1.7600002, 1.7600002)
+shape = SubResource("RectangleShape2D_kx6l7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Environment/MapTiles" index="2"]
 position = Vector2(378, 601)
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/MapTiles/StaticBody2D2" index="0"]
-position = Vector2(25.113914, -1.3959893)
-scale = Vector2(0.71696997, 0.068687685)
+position = Vector2(446.38605, -138.80202)
+scale = Vector2(2.2968755, 0.22184369)
 texture = ExtResource("3_bt44k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/MapTiles/StaticBody2D2" index="1"]
 visibility_layer = 2
-position = Vector2(25, -1.5)
+position = Vector2(448.38608, -139.604)
 scale = Vector2(1.7600002, 1.7600002)
 shape = SubResource("RectangleShape2D_bt44k")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Environment/MapTiles" index="2"]
-position = Vector2(522, 600)
+[node name="StaticBody2D3" type="StaticBody2D" parent="Environment/MapTiles" index="3"]
+position = Vector2(1202, 465.00003)
+scale = Vector2(3.5276904, 3.5276904)
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/MapTiles/StaticBody2D3" index="0"]
 position = Vector2(25.113914, -1.3959893)
@@ -88,12 +103,13 @@ position = Vector2(792, 662)
 next_level_id = 2
 
 [node name="Sprite2D" parent="Environment/Door" index="0"]
-position = Vector2(-57, -32.000008)
-scale = Vector2(0.27343774, 0.27343774)
+position = Vector2(1149.8767, -69.20142)
+scale = Vector2(1.1855743, 1.0437279)
 texture = ExtResource("3_bt44k")
 
 [node name="CollisionShape2D" parent="Environment/Door" index="1"]
-position = Vector2(-57, -32)
+position = Vector2(1149.8768, -69.201416)
+scale = Vector2(4.33581, 3.817059)
 shape = SubResource("RectangleShape2D_btoec")
 
 [editable path="Environment/Door"]
