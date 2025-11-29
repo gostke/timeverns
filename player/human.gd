@@ -2,22 +2,30 @@ extends CharacterBody2D
 class_name Human
 
 @export var is_player: bool = false
-@export var speed: float = 5
+@export var speed: float = 2
 @export var jump_force: float = 10
 @export var mass: float = 1
 @export_range(0, 1, 0.01) var drag: float = 0.9
 @onready var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var clone_timer: Timer = $CloneTimer
+const SPEED_MULTIPLIER: float = 100
 
+@onready var clone_timer: Timer = $CloneTimer
 @onready var human_scene:= preload("uid://efahif683vjg")
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 # 50 frames per second
 @onready var frame_count: int = int(clone_timer.wait_time * 50)
 var frames: Array[Frame]
+var curr_frame: int = 0
 
+func _ready() -> void:
+	clone_timer.start()
+	frames.resize(frame_count)
 
 func summon_clone() -> void:
+	if !clone_timer.is_stopped():
+		return
 	assert(is_player)
 	var clone: Human = human_scene.instantiate()
 	# deep copy
@@ -25,11 +33,29 @@ func summon_clone() -> void:
 	add_sibling(clone)
 	clone.global_position = clone.frames[0].global_pos
 	clone.get_node("CloneTimer").start()
+	$CloneTimer.start()
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("clone") and is_player:
 		summon_clone()
-
+	
+	if !is_zero_approx(velocity.x):
+		if velocity.x < 0:
+			sprite.flip_h = false
+		else:
+			sprite.flip_h = true
+		# sin
+		sprite.play("walk")
+	else:
+		# sin 2
+		sprite.play("stand")
+	
+	if !is_on_floor():
+		if velocity.y < 0:
+			sprite.play("jump")
+		else:
+			sprite.play("fall")
+		
 func _physics_process(_delta: float) -> void:
 	velocity.x *= drag
 	
@@ -37,9 +63,11 @@ func _physics_process(_delta: float) -> void:
 		handle_player()
 	else:
 		handle_clone()
-		
-	velocity.y += gravity * mass * 0.001
+	
+	velocity *= SPEED_MULTIPLIER
+	velocity.y += gravity * mass * (1.0/SPEED_MULTIPLIER)
 	move_and_slide()
+	velocity /= SPEED_MULTIPLIER
 	
 func handle_player() -> void:
 	# recording
@@ -71,8 +99,8 @@ func jumping(frame: Frame) -> void:
 func handle_clone() -> void:
 	if frames.is_empty():
 		return
-	frames.pop_front().run_actions(self)
-
-
-func _on_clone_timer_timeout() -> void:
-	call_deferred("queue_free")
+	frames[curr_frame].run_actions(self)
+	curr_frame += 1
+	if curr_frame >= frame_count:
+		curr_frame = 0
+		global_position = frames[0].global_pos
