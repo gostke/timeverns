@@ -92,6 +92,7 @@ size = Vector2(53, 85)
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_3kgn4")
+is_player = true
 jump_force = 5.0
 mass = 2.0
 drag = 0.2
