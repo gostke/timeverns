@@ -36,6 +36,7 @@ func summon_clone() -> void:
 	var clone: Human = human_scene.instantiate()
 	# deep copy
 	clone.frames = frames.duplicate(true)
+	clone.is_player = false
 	add_sibling(clone)
 	clone.global_position = clone.frames[0].global_pos
 	clone.get_node("Timers/CloneTimer").start()
@@ -122,6 +123,9 @@ func use_and_add_action(action: Action, frame: Frame) -> void:
 	
 func handle_clone() -> void:
 	if frames.is_empty():
+		return
+	# don't ask why (I don't know)
+	if !frames[curr_frame]:
 		return
 	frames[curr_frame].run_actions(self)
 	curr_frame += 1

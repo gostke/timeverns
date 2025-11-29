@@ -10,8 +10,30 @@
 
 [node name="level_2" instance=ExtResource("1_0srwa")]
 
+<<<<<<< HEAD
 [node name="WorldFloor" type="StaticBody2D" parent="." index="0"]
 position = Vector2(23, -34)
+=======
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilhis"]
+size = Vector2(100, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5uil"]
+size = Vector2(34, 36)
+
+[node name="Level2" instance=ExtResource("1_0srwa")]
+
+[node name="Human" parent="." index="0" instance=ExtResource("2_v5uil")]
+position = Vector2(163, 606)
+is_player = true
+
+[node name="Camera2D" type="Camera2D" parent="Human" index="3"]
+
+[node name="Entities" parent="." index="1"]
+position = Vector2(51, -22)
+
+[node name="WorldFloor" type="StaticBody2D" parent="." index="2"]
+position = Vector2(51, -21)
+>>>>>>> a51453dd55da1b3183a839ce911eca9f44b19869
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor" index="0"]
 position = Vector2(621, 651)
