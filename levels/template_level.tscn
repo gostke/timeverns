@@ -1,7 +1,13 @@
-[gd_scene format=3 uid="uid://cwisekllj2ety"]
+[gd_scene load_steps=2 format=3 uid="uid://cwisekllj2ety"]
+
+[sub_resource type="TileSet" id="TileSet_8424m"]
 
 [node name="TemplateLevel" type="Node2D"]
 
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_8424m")
+format = 2

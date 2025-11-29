@@ -99,6 +99,8 @@ func handle_player() -> void:
 	jumping(new_frame)
 	interacting(new_frame)
 	new_frame.flipped = flipper.flipped
+	new_frame.animation = sprite.animation
+	new_frame.anim_frame = sprite.frame
 	
 	frames.push_back(new_frame)
 	if frames.size() >= frame_count:

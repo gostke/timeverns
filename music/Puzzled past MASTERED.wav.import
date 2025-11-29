@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://y2ci3rmspfrt"
+path="res://.godot/imported/Puzzled past MASTERED.wav-107d53e070cbf47cb40f7d1ae1ca3cb4.sample"
+
+[deps]
+
+source_file="res://music/Puzzled past MASTERED.wav"
+dest_files=["res://.godot/imported/Puzzled past MASTERED.wav-107d53e070cbf47cb40f7d1ae1ca3cb4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

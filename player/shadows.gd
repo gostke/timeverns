@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var human: Human = $".."
-var traces: Array[Sprite2D]
+var traces: Array[AnimatedSprite2D]
 @export var trace_division: int = 10
 @onready var trace_count: int
 @export var text_temp: Texture
@@ -15,10 +15,8 @@ func _ready() -> void:
 	await get_tree().process_frame
 	trace_count = int(human.frame_count / trace_division)
 	for i in range(trace_count):
-		var new_sprite := Sprite2D.new()
-		new_sprite.texture = text_temp
-		new_sprite.scale = animated_sprite_2d.scale
-		new_sprite.position = animated_sprite_2d.position
+		# if error: it's here
+		var new_sprite := animated_sprite_2d.duplicate()
 		new_sprite.modulate.a = (float(i) / trace_count) * 0.2 + 0.05
 		new_sprite.visible = false
 		add_child(new_sprite)
@@ -30,16 +28,20 @@ func _process(_delta: float) -> void:
 		traces[0].modulate.r = 0.5
 		traces[0].modulate.g = 0.7
 		traces[0].modulate.b = 0.5
-		traces[0].visible = true
+		traces[0].visible = true 
 	else:
 		traces[0].modulate.r = 1
 		traces[0].modulate.g = 1
 		traces[0].modulate.b = 1
 	
 	for i in range(trace_count):
-		if !human.frames[i * trace_division]:
+		var current_frame := human.frames[i * trace_division]
+		if !current_frame:
 			continue
-		traces[i].global_position = human.frames[i * trace_division].global_pos + animated_sprite_2d.position
+		traces[i].global_position = current_frame.global_pos + animated_sprite_2d.position
+		traces[i].animation = current_frame.animation
+		traces[i].frame = current_frame.anim_frame
+		traces[i].flip_h = current_frame.flipped
 		if i == 0:
 			continue
 		if traces[i].global_position.distance_to(traces[i-1].global_position) < 1:

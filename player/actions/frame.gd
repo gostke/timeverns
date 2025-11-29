@@ -4,6 +4,8 @@ class_name Frame
 var actions_: Array[Action]
 var global_pos: Vector2
 var flipped: bool
+var animation: String
+var anim_frame: int
 
 func _init(global_position: Vector2) -> void:
 	global_pos = global_position
