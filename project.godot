@@ -24,7 +24,6 @@ LevelManager="*res://levels/level_manager.tscn"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
-
 [editor_plugins]
 
 enabled=PackedStringArray()

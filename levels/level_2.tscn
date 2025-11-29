@@ -44,14 +44,15 @@ position = Vector2(51, -20)
 position = Vector2(51, -14)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Environment/MapTiles" index="0"]
+scale = Vector2(0.9794133, 1.000562)
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/MapTiles/StaticBody2D" index="0"]
-position = Vector2(279, 618)
-scale = Vector2(0.296875, 0.6757819)
+position = Vector2(281.80136, 567.6809)
+scale = Vector2(0.296875, 1.5352436)
 texture = ExtResource("3_5722l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/MapTiles/StaticBody2D" index="1"]
-position = Vector2(279, 617.5)
+position = Vector2(282.8224, 624.649)
 shape = SubResource("RectangleShape2D_5722l")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Environment/MapTiles" index="1"]

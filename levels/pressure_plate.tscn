@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbro1fup3i8uv"]
+[gd_scene load_steps=4 format=3 uid="uid://cbro1fup3i8uv"]
 
+[ext_resource type="Script" uid="uid://dfvdwpkrwn0wx" path="res://levels/pressure_plate.gd" id="1_n667r"]
 [ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_xaqss"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaqss"]
+size = Vector2(41, 8)
+
 [node name="PressurePlate" type="StaticBody2D"]
+script = ExtResource("1_n667r")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, -2.7500029)
@@ -10,7 +15,11 @@ scale = Vector2(0.89665747, 0.2304688)
 texture = ExtResource("1_xaqss")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-54, 12, -21, -17, 25, -17, 55, 12)
+polygon = PackedVector2Array(-54, 12, -21, -17, 1.9224396, -17.000004, 25, -17, 55, 12)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, -74)
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, -23)
+shape = SubResource("RectangleShape2D_xaqss")
