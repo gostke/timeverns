@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://efahif683vjg"]
+[gd_scene load_steps=17 format=3 uid="uid://efahif683vjg"]
 
 [ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
 [ext_resource type="Texture2D" uid="uid://b6s61xwevelc0" path="res://sprites/CHARACTER SPRITES.png" id="2_uuleo"]
 [ext_resource type="Script" uid="uid://tjdjrpe7ukdo" path="res://player/shadows.gd" id="3_uuleo"]
+[ext_resource type="PackedScene" uid="uid://c6joq0plpufyn" path="res://player/flipper.tscn" id="4_icdvv"]
+[ext_resource type="Script" uid="uid://bnmalnk8mg7bb" path="res://player/item_picker.gd" id="5_1ou5u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uuleo"]
 atlas = ExtResource("2_uuleo")
@@ -84,6 +86,9 @@ animations = [{
 radius = 20.0
 height = 88.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuleo"]
+size = Vector2(53, 85)
+
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_3kgn4")
@@ -100,7 +105,8 @@ text_temp = SubResource("AtlasTexture_uuleo")
 position = Vector2(1.9999998, -52)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_vgf6f")
-animation = &"fall"
+animation = &"stand"
+autoplay = "stand"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -46)
@@ -109,5 +115,19 @@ shape = SubResource("CapsuleShape2D_3kgn4")
 [node name="CloneTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Flipper" parent="." instance=ExtResource("4_icdvv")]
+
+[node name="ItemPicker" type="Area2D" parent="Flipper"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("5_1ou5u")
+
+[node name="Hand" type="Marker2D" parent="Flipper/ItemPicker"]
+position = Vector2(-28, -54)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flipper/ItemPicker"]
+position = Vector2(-38.5, -46.5)
+shape = SubResource("RectangleShape2D_uuleo")
 
 [connection signal="timeout" from="CloneTimer" to="." method="_on_clone_timer_timeout"]
