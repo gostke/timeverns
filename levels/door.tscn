@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="2_xc1x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqsk8"]
-size = Vector2(122, 121)
+size = Vector2(122, 123)
 
 [node name="Door" type="Area2D"]
 visibility_layer = 2
@@ -16,7 +16,7 @@ texture = ExtResource("2_xc1x7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visibility_layer = 2
-position = Vector2(0, 1.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_jqsk8")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
