@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4mpfxh76c615"]
+
+[ext_resource type="Texture2D" uid="uid://c32o08qcqrb5h" path="res://sprites/mineta.png" id="1_i6djc"]
+
+[node name="Winieta" type="TextureRect"]
+modulate = Color(0, 0, 0, 0.91764706)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_i6djc")
+expand_mode = 2

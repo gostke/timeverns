@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=4 uid="uid://d1ebd70mf0wos"]
+
+[ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_fwt2v"]
+[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="2_b15rf"]
+[ext_resource type="PackedScene" uid="uid://dwhjo8dxgkrs6" path="res://levels/interactable/moving_platform_ready.tscn" id="3_s4mq8"]
+[ext_resource type="PackedScene" uid="uid://fb52l6mkeubw" path="res://levels/interactable/jump_pressure_plate.tscn" id="4_t0qhu"]
+
+[sub_resource type="Curve2D" id="Curve2D_s4mq8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 275, -163, 0, 0, 0, 0, 271, -463)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_t6q73"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 714, -53, 0, 0, 0, 0, -379, -297, 0, 0, 0, 0, -387, -702)
+}
+point_count = 3
+
+[node name="TemplateLevel" instance=ExtResource("1_fwt2v")]
+
+[node name="TileMap" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAFAPj/AQAAAAAAAAAGAPj/AwAAAAAAAAAHAPj/AwAAAAAAAAAIAPj/AwAAAAAAAAAJAPj/AQABAAAAAAAKAPj/AwAAAAAAAAALAPj/AwAAAAAAAAAMAPj/AQABAAAAAAANAPj/AQABAAAAAAAOAPj/AQABAAAAAAAPAPj/AQABAAAAAAAQAPj/AwAAAAAAAAARAPj/AwAAAAAAAAASAPj/AwAAAAAAAAATAPj/AwAAAAAAAAAUAPj/AQABAAAAAAAVAPj/AQABAAAAAAAWAPj/AQABAAAAAAAKAPn/AQACAAAAAAALAPn/AQADAAAAAAAQAPn/AQAAAAAAAAATAPn/AQABAAAAAAARAPn/AQACAAAAAAASAPn/AQABAAAAAAA=")
+
+[node name="RightPressurePlate2" parent="Entities" index="1" instance=ExtResource("2_b15rf")]
+position = Vector2(395, -363)
+
+[node name="Path2D2" type="Path2D" parent="Entities" index="2"]
+curve = SubResource("Curve2D_s4mq8")
+
+[node name="MovingPlatformReady" parent="Entities/Path2D2" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_s4mq8")]
+position = Vector2(275, -163)
+rotation = 1.5707964
+scale = Vector2(4, 4)
+switch = NodePath("../../RightPressurePlate2")
+
+[node name="Path2D" type="Path2D" parent="Entities" index="3"]
+position = Vector2(59, 0)
+curve = SubResource("Curve2D_t6q73")
+
+[node name="MovingPlatformReady" parent="Entities/Path2D" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_s4mq8")]
+position = Vector2(714, -53)
+speed = 4.0
+switch = NodePath("JumpPressurePlate")
+
+[node name="JumpPressurePlate" parent="Entities/Path2D/MovingPlatformReady" index="1" instance=ExtResource("4_t0qhu")]
+position = Vector2(-1, -16)
+
+[node name="Path2D3" type="Path2D" parent="Entities" index="4"]
+position = Vector2(-110, 0)
+curve = SubResource("Curve2D_t6q73")
+
+[node name="MovingPlatformReady" parent="Entities/Path2D3" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_s4mq8")]
+position = Vector2(714, -53)
+speed = 4.0
+switch = NodePath("JumpPressurePlate")
+
+[node name="JumpPressurePlate" parent="Entities/Path2D3/MovingPlatformReady" index="1" instance=ExtResource("4_t0qhu")]
+position = Vector2(-1, -16)

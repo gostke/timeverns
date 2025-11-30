@@ -16,11 +16,11 @@ switch = NodePath("../PressurePlate")
 [node name="PressurePlate" parent="." index="1" instance=ExtResource("3_v5uil")]
 position = Vector2(172, -7)
 
+[node name="TileMap" parent="." index="2"]
+tile_map_data = PackedByteArray("AAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAACAP7/AwAAAAAAAAACAP3/AwAAAAAAAAA=")
+
 [node name="Human" parent="Entities" index="0"]
 position = Vector2(-384, -3)
-
-[node name="TileMap" parent="." index="4"]
-tile_map_data = PackedByteArray("AAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAACAP7/AwAAAAAAAAACAP3/AwAAAAAAAAA=")
 
 [node name="Sprite2D" parent="Decorations/Background3" index="0"]
 position = Vector2(-252, -78)

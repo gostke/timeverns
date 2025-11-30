@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwisekllj2ety"]
+[gd_scene load_steps=12 format=3 uid="uid://cwisekllj2ety"]
 
 [ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="1_ktgux"]
 [ext_resource type="TileSet" uid="uid://caeb4spg26enr" path="res://levels/tilesett.tres" id="1_wxtcu"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://6n5gkx7moj4q" path="res://sprites/BACKGROUND 1.png" id="3_3jtrw"]
 [ext_resource type="Texture2D" uid="uid://k1xl6861iu52" path="res://sprites/BACKGROUND 3.png" id="3_7qvon"]
 [ext_resource type="Texture2D" uid="uid://db0f6ikfnn7at" path="res://sprites/BACKGROUND 2.png" id="4_7qvon"]
+[ext_resource type="PackedScene" uid="uid://c4mpfxh76c615" path="res://levels/winieta.tscn" id="9_tj7qd"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wxtcu"]
 
@@ -15,6 +16,10 @@
 background_mode = 1
 
 [node name="TemplateLevel" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Winieta" parent="CanvasLayer" instance=ExtResource("9_tj7qd")]
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 scale = Vector2(0.15, 0.15)
@@ -96,7 +101,7 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_8424m")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Decorations/Foreground"]
-position = Vector2(0, -730)
+position = Vector2(24, -968)
 rotation = 3.1415927
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_8424m")

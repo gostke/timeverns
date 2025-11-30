@@ -3,13 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="2_hldmh"]
 [ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="3_gew73"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://dwhjo8dxgkrs6" path="res://levels/interactable/moving_platform_ready.tscn" id="4_bmgug"]
 [ext_resource type="PackedScene" uid="uid://dlqkbtk7pyxls" path="res://levels/interactable/breakable.tscn" id="5_20opy"]
 [ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/portal.tscn" id="6_8l0e1"]
-=======
-[ext_resource type="PackedScene" path="res://levels/interactable/moving_platform_ready.tscn" id="4_bmgug"]
->>>>>>> d66adfee561d7b87f828cb1c518a74439599348b
 
 [sub_resource type="Curve2D" id="Curve2D_20opy"]
 _data = {
@@ -36,7 +32,7 @@ tile_map_data = PackedByteArray("AAALAP7/AQADAAAAAAAKAP7/AQACAAAAAADw//3/AQACAAA
 [node name="BombSpawner" parent="Entities" index="0" instance=ExtResource("2_hldmh")]
 position = Vector2(622, -16)
 
-[node name="Camera2D" parent="Entities/Human" index="7"]
+[node name="Camera2D" parent="Entities/Human" index="8"]
 zoom = Vector2(1.4, 1.4)
 
 [node name="PressurePlate" parent="Entities" index="2" instance=ExtResource("3_gew73")]
