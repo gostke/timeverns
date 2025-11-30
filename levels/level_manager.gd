@@ -6,6 +6,9 @@ extends Node
 var level_2: PackedScene = preload("res://levels/level_2.tscn")
 var level_3: PackedScene = preload("res://levels/level_3.tscn")
 
+func _ready() -> void:
+	$BackgroundMusic.play()
+
 var levels: Dictionary = {
 	2 : level_2,
 	3: level_3

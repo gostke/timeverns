@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddoe46ik4063e"]
+[gd_scene load_steps=3 format=3 uid="uid://ddoe46ik4063e"]
 
 [ext_resource type="Script" uid="uid://djymi40tteb30" path="res://levels/level_manager.gd" id="1_hvuti"]
+[ext_resource type="AudioStream" uid="uid://dqtkd8toxjs53" path="res://music/puzzled past 3rd iteration (with wav).wav" id="2_6tvrh"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_hvuti")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6tvrh")
+volume_db = -3.0

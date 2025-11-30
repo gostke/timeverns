@@ -37,10 +37,10 @@ shape = SubResource("RectangleShape2D_xaqss")
 
 [node name="pressed" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_bef3c")
+volume_db = -5.0
 max_distance = 150.0
-attenuation = 0.14865172
 
 [node name="unpressed" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_53jfg")
+volume_db = -5.0
 max_distance = 150.0
-attenuation = 0.12074219

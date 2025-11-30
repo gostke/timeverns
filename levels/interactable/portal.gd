@@ -16,14 +16,16 @@ func _physics_process(_delta: float) -> void:
 		#play sound only once when portal is activated
 		if is_opening != true:
 			$opening.play()
+			await $opening.finished
+			$opened.play()
 		is_opening = true
 		
 		$AnimatedSprite2D.play("opened")
 	else:
 		
 		if is_opening != false:
-			pass
-			#$closed.play()
+			$closing.play()
+			
 		is_opening = false
 		
 		is_opening = false

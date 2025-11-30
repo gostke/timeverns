@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="2_hldmh"]
 [ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="3_gew73"]
-[ext_resource type="PackedScene" uid="uid://dwhjo8dxgkrs6" path="res://levels/interactable/moving_platform_ready.tscn" id="4_bmgug"]
+[ext_resource type="PackedScene" path="res://levels/interactable/moving_platform_ready.tscn" id="4_bmgug"]
 
 [sub_resource type="Curve2D" id="Curve2D_20opy"]
 _data = {
@@ -18,9 +18,6 @@ _data = {
 point_count = 2
 
 [node name="level3" instance=ExtResource("1_lfnxh")]
-
-[node name="TileMap" parent="." index="0"]
-tile_map_data = PackedByteArray("AAALAP7/AQADAAAAAAAKAP7/AQACAAAAAADw//3/AQACAAAAAADx//3/AQAAAAAAAADy//3/AQABAAAAAADz//3/AQADAAAAAAD9//n/AQAAAAAAAAD+//n/AQABAAAAAADt//v/AQACAAAAAADu//v/AQADAAAAAADw//b/AQAAAAAAAADx//b/AQABAAAAAAAAAPH/AQABAAAAAAABAPH/AQABAAAAAAACAPH/AQAAAAAAAAADAPH/AQAAAAAAAAAEAPH/AQAAAAAAAAAEAPb/AQABAAAAAAADAPb/AQAAAAAAAAACAPL/AwAAAAAAAAACAPP/AwAAAAAAAAACAPT/AwAAAAAAAAACAPX/AwAAAAAAAAACAPb/AwAAAAAAAAAFAPT/AwAAAAAAAAAFAPX/AwAAAAAAAAAFAPb/AwAAAAAAAAAMAPH/AwAAAAAAAAANAPH/AwAAAAAAAAAKAPP/AwAAAAAAAAAKAPL/AwAAAAAAAAALAPH/AwAAAAAAAAAJAPX/AwAAAAAAAAAIAPX/AwAAAAAAAAAHAPX/AwAAAAAAAAAGAPX/AwAAAAAAAADs//H/AQACAAAAAADt//H/AQADAAAAAAAJAPP/AwAAAAAAAAAKAPH/AwAAAAAAAAAJAPT/AwAAAAAAAAA=")
 
 [node name="BombSpawner" parent="Entities" index="0" instance=ExtResource("2_hldmh")]
 position = Vector2(616, -25)
@@ -46,3 +43,6 @@ curve = SubResource("Curve2D_bmgug")
 
 [node name="MovingPlatformReady" parent="Entities/Path2D2" index="0" instance=ExtResource("4_bmgug")]
 position = Vector2(-582, -781)
+
+[node name="TileMap" parent="." index="2"]
+tile_map_data = PackedByteArray("AAALAP7/AQADAAAAAAAKAP7/AQACAAAAAADw//3/AQACAAAAAADx//3/AQAAAAAAAADy//3/AQABAAAAAADz//3/AQADAAAAAAD9//n/AQAAAAAAAAD+//n/AQABAAAAAADt//v/AQACAAAAAADu//v/AQADAAAAAADw//b/AQAAAAAAAADx//b/AQABAAAAAAAAAPH/AQABAAAAAAABAPH/AQABAAAAAAACAPH/AQAAAAAAAAADAPH/AQAAAAAAAAAEAPH/AQAAAAAAAAAEAPb/AQABAAAAAAADAPb/AQAAAAAAAAACAPL/AwAAAAAAAAACAPP/AwAAAAAAAAACAPT/AwAAAAAAAAACAPX/AwAAAAAAAAACAPb/AwAAAAAAAAAFAPT/AwAAAAAAAAAFAPX/AwAAAAAAAAAFAPb/AwAAAAAAAAAMAPH/AwAAAAAAAAANAPH/AwAAAAAAAAAKAPP/AwAAAAAAAAAKAPL/AwAAAAAAAAALAPH/AwAAAAAAAAAJAPX/AwAAAAAAAAAIAPX/AwAAAAAAAAAHAPX/AwAAAAAAAAAGAPX/AwAAAAAAAADs//H/AQACAAAAAADt//H/AQADAAAAAAAJAPP/AwAAAAAAAAAKAPH/AwAAAAAAAAAJAPT/AwAAAAAAAAA=")

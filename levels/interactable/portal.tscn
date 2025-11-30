@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cr24k45xsf0ec"]
+[gd_scene load_steps=10 format=3 uid="uid://cr24k45xsf0ec"]
 
 [ext_resource type="Script" uid="uid://8tw3aksbcar2" path="res://levels/interactable/portal.gd" id="1_m52sf"]
 [ext_resource type="Texture2D" uid="uid://cfb4dlobl6rh3" path="res://sprites/PORTAL.png" id="2_m52sf"]
 [ext_resource type="AudioStream" uid="uid://cpdwlysj5sjg0" path="res://music/portalOpening.wav" id="3_opa0k"]
+[ext_resource type="AudioStream" uid="uid://dvqvcs5um0pot" path="res://music/portalClosing.wav" id="4_cmki7"]
 [ext_resource type="AudioStream" uid="uid://85r4h0kkwmxy" path="res://music/portalHum.wav" id="4_o8yml"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m52sf"]
@@ -57,10 +58,17 @@ polygon = PackedVector2Array(-27, -80, -26, 113, -7, 110, 9, 91, 22, 28, 18, -30
 
 [node name="opening" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_opa0k")
+volume_db = -20.0
 
-[node name="opening2" type="AudioStreamPlayer2D" parent="."]
+[node name="closing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cmki7")
+volume_db = -20.0
+attenuation = 1.4142138
 
 [node name="opened" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_o8yml")
+volume_db = 12.5
+max_distance = 400.0
+attenuation = 2.0000005
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
