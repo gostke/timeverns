@@ -2525,10 +2525,11 @@ texture_region_size = Vector2i(262, 300)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1rr4"]
 texture = ExtResource("3_ucuhr")
-margins = Vector2i(280, 288)
-texture_region_size = Vector2i(240, 240)
+margins = Vector2i(407, 393)
+texture_region_size = Vector2i(190, 210)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-118.5921, -120.056206, 117.41057, -119.10399, 119.10399, 119.66846, -118.53952, 118.53952)
+1:0/0 = 0
 
 [resource]
 tile_size = Vector2i(266, 300)

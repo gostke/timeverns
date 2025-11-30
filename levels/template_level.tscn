@@ -14,6 +14,7 @@
 background_mode = 1
 
 [node name="TemplateLevel" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-976.0, -951.0, -1529.0, 97.0]
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 scale = Vector2(0.15, 0.15)
@@ -28,6 +29,10 @@ metadata/_edit_lock_ = true
 [node name="Camera2D" type="Camera2D" parent="Entities/Human"]
 position = Vector2(0, -64)
 zoom = Vector2(1.6, 1.6)
+limit_left = -950
+limit_top = -2035
+limit_right = 800
+limit_bottom = 95
 
 [node name="Items" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
