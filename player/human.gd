@@ -15,6 +15,9 @@ const SPEED_MULTIPLIER: float = 100
 @onready var human_scene:= preload("uid://efahif683vjg")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+# what the helly...
+var was_on_floor: bool = false
+
 # 50 frames per second
 @onready var frame_count: int = int(clone_timer.wait_time * 50)
 var frames: Array[Frame]
@@ -26,6 +29,11 @@ var clones: Array[Human] = [null, null, null]
 @onready var item_picker: ItemPicker = $Flipper/ItemPicker
 
 signal on_loop_reset
+signal on_throw
+signal on_pick_up
+signal on_walk
+signal on_jump
+signal on_fall
 
 func _ready() -> void:
 	clone_timer.start()
@@ -72,6 +80,8 @@ func _process(_delta: float) -> void:
 			flipper.flip(true)
 		# sin
 		sprite.play("walk")
+		if is_zero_approx(velocity.y):
+			on_walk.emit()
 	else:
 		# sin 2
 		sprite.play("stand")
@@ -79,8 +89,15 @@ func _process(_delta: float) -> void:
 	if !is_on_floor():
 		if velocity.y < 0:
 			sprite.play("jump")
+			if was_on_floor:
+				on_jump.emit()
 		else:
 			sprite.play("fall")
+	# game jam code.........
+	if is_on_floor():
+		if !was_on_floor:
+			on_fall.emit()
+	was_on_floor = is_on_floor()		
 		
 func _physics_process(_delta: float) -> void:
 	velocity.x *= drag

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://efahif683vjg"]
+[gd_scene load_steps=31 format=3 uid="uid://efahif683vjg"]
 
 [ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
 [ext_resource type="Material" uid="uid://dey7tis2cnjn" path="res://player/human_shader.tres" id="2_54xnq"]
@@ -6,6 +6,17 @@
 [ext_resource type="Script" uid="uid://tjdjrpe7ukdo" path="res://player/shadows.gd" id="3_uuleo"]
 [ext_resource type="PackedScene" uid="uid://c6joq0plpufyn" path="res://player/flipper.tscn" id="4_icdvv"]
 [ext_resource type="Script" uid="uid://bnmalnk8mg7bb" path="res://player/item_picker.gd" id="5_1ou5u"]
+[ext_resource type="Script" uid="uid://dxnspogqlnhl4" path="res://player/player_audio.gd" id="7_vgf6f"]
+[ext_resource type="AudioStream" uid="uid://b5mykvhntf7sf" path="res://music/szur1.wav" id="8_8eh2a"]
+[ext_resource type="AudioStream" uid="uid://dfjwvu82ff6d7" path="res://music/jumpjumpNEW1.wav" id="8_kghui"]
+[ext_resource type="AudioStream" uid="uid://ch6hwa1mgysdd" path="res://music/jumpjumpNEW2.wav" id="9_1gyq7"]
+[ext_resource type="AudioStream" uid="uid://cjp6hm12u1e0j" path="res://music/szur2.wav" id="9_3yb6j"]
+[ext_resource type="AudioStream" uid="uid://ddtrlup5o85ra" path="res://music/szur3.wav" id="10_pmqlk"]
+[ext_resource type="AudioStream" uid="uid://c65kntdu853g0" path="res://music/jumpjumpNEW3.wav" id="10_w5q14"]
+[ext_resource type="AudioStream" uid="uid://s2l6jpcwxr8k" path="res://music/jumpjumpNEW4.wav" id="11_dtvd4"]
+[ext_resource type="AudioStream" uid="uid://nlskssffu212" path="res://music/szur4.wav" id="11_ie3bw"]
+[ext_resource type="AudioStream" uid="uid://ctyumb7ru30j8" path="res://music/jumpjump2.wav" id="16_w5q14"]
+[ext_resource type="AudioStream" uid="uid://bwqxb6f73mw6r" path="res://music/bombThrow.wav" id="17_dtvd4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uuleo"]
 atlas = ExtResource("2_uuleo")
@@ -93,6 +104,8 @@ size = Vector2(53, 85)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ou5u"]
 size = Vector2(40, 14)
 
+[sub_resource type="AudioStream" id="AudioStream_q4p61"]
+
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_3kgn4")
@@ -152,5 +165,13 @@ sync_to_physics = false
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_1ou5u")
 one_way_collision = true
+
+[node name="PlayerAudio" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStream_q4p61")
+script = ExtResource("7_vgf6f")
+jump_sounds = Array[AudioStream]([ExtResource("8_kghui"), ExtResource("9_1gyq7"), ExtResource("10_w5q14"), ExtResource("11_dtvd4")])
+walk_sounds = Array[AudioStream]([ExtResource("8_8eh2a"), ExtResource("9_3yb6j"), ExtResource("10_pmqlk"), ExtResource("11_ie3bw")])
+pick_sound = ExtResource("16_w5q14")
+throw_sound = ExtResource("17_dtvd4")
 
 [connection signal="timeout" from="Timers/CloneTimer" to="." method="_on_clone_timer_timeout"]
