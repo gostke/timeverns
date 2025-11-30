@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://fb52l6mkeubw"]
+[gd_scene load_steps=8 format=3 uid="uid://fb52l6mkeubw"]
 
 [ext_resource type="Script" uid="uid://dcm3hmdm62bxd" path="res://levels/interactable/jump_pressure_plate.gd" id="1_glgk0"]
 [ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="2_w8nr0"]
+[ext_resource type="AudioStream" uid="uid://dap52fu3rmgqb" path="res://music/buttonPress.wav" id="3_vsq2f"]
+[ext_resource type="AudioStream" uid="uid://c54t2tyw5lkbs" path="res://music/buttonUnpress.wav" id="4_sexlx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl8xi"]
 atlas = ExtResource("2_w8nr0")
@@ -12,13 +14,13 @@ atlas = ExtResource("2_w8nr0")
 region = Rect2(1846.2365, 359.57828, 242.11731, 83.971344)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaqss"]
-size = Vector2(35.714317, 14.285728)
+size = Vector2(41.124954, 5.331012)
 
 [node name="JumpPressurePlate" type="StaticBody2D"]
-scale = Vector2(0.55999964, 0.55999964)
 script = ExtResource("1_glgk0")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 
 [node name="Unpressed" type="Sprite2D" parent="."]
@@ -30,11 +32,22 @@ scale = Vector2(0.15, 0.15)
 texture = SubResource("AtlasTexture_w8nr0")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.8267486, 0.84411746)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5.9233465)
 shape = SubResource("RectangleShape2D_xaqss")
+
+[node name="pressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vsq2f")
+max_distance = 150.0
+attenuation = 0.14865172
+
+[node name="unpressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_sexlx")
+max_distance = 150.0
+attenuation = 0.12074219
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
