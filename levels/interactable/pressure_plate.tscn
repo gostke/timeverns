@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbro1fup3i8uv"]
+[gd_scene load_steps=8 format=3 uid="uid://cbro1fup3i8uv"]
 
 [ext_resource type="Script" uid="uid://dfvdwpkrwn0wx" path="res://levels/interactable/pressure_plate.gd" id="1_n667r"]
 [ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="2_2hrdp"]
@@ -15,10 +15,6 @@ region = Rect2(1846.2365, 359.57828, 242.11731, 83.971344)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaqss"]
 size = Vector2(33, 13)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_53jfg"]
-radius = 5.0
-height = 36.0
 
 [node name="PressurePlate" type="StaticBody2D"]
 script = ExtResource("1_n667r")
@@ -48,8 +44,3 @@ attenuation = 0.14865172
 stream = ExtResource("4_53jfg")
 max_distance = 150.0
 attenuation = 0.12074219
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_53jfg")

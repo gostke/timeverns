@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fb52l6mkeubw"]
+[gd_scene load_steps=8 format=3 uid="uid://fb52l6mkeubw"]
 
 [ext_resource type="Script" uid="uid://dcm3hmdm62bxd" path="res://levels/interactable/jump_pressure_plate.gd" id="1_glgk0"]
 [ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="2_w8nr0"]
@@ -15,10 +15,6 @@ region = Rect2(1846.2365, 359.57828, 242.11731, 83.971344)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xaqss"]
 size = Vector2(41.124954, 5.331012)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vsq2f"]
-radius = 4.0
-height = 32.0
 
 [node name="JumpPressurePlate" type="StaticBody2D"]
 script = ExtResource("1_glgk0")
@@ -52,11 +48,6 @@ attenuation = 0.14865172
 stream = ExtResource("4_sexlx")
 max_distance = 150.0
 attenuation = 0.12074219
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_vsq2f")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

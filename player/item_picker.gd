@@ -50,6 +50,7 @@ func throw() -> void:
 		human.on_throw.emit()
 		human.can_change_anim = false
 		human.sprite.play("throw")
+		human.thorns.play("throw")
 		var throw_dir := Vector2(1, 1)
 		if !flipper.flipped:
 			throw_dir.x = -1
