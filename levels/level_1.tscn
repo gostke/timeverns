@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxsx1lcvou6nm"]
+[gd_scene load_steps=12 format=3 uid="uid://cxsx1lcvou6nm"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_vn7o3"]
 [ext_resource type="Script" uid="uid://cb4luq5s1mgst" path="res://levels/level_1.gd" id="2_btoec"]
 [ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="3_bt44k"]
 [ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/door.tscn" id="4_kx6l7"]
 [ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="4_n46q3"]
+[ext_resource type="Texture2D" uid="uid://be7sbf68iy3vj" path="res://sprites/FLOOR 1.png" id="6_btoec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kx6l7"]
 size = Vector2(62.49999, 19.318165)
@@ -116,5 +117,27 @@ scroll_offset = Vector2(16, -68)
 
 [node name="Sprite2D" parent="Decorations/Background3" index="0"]
 position = Vector2(54, -40)
+
+[node name="Background" parent="Decorations" index="1"]
+z_index = 1
+scroll_scale = Vector2(1, 1)
+scroll_offset = Vector2(0, 0)
+
+[node name="Sprite2D" parent="Decorations/Background" index="0"]
+modulate = Color(1, 1, 1, 1)
+z_index = -1
+texture = ExtResource("6_btoec")
+
+[node name="Floor" parent="Decorations" index="2"]
+modulate = Color(1, 1, 1, 1)
+
+[node name="Foreground" parent="Decorations" index="3"]
+scroll_scale = Vector2(1, 1)
+scroll_offset = Vector2(0, 0)
+
+[node name="Sprite2D" parent="Decorations/Foreground" index="0"]
+scale = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Decorations" index="4"]
 
 [editable path="Environment/Door"]

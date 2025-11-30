@@ -1,14 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://mkvfdfcmvcti"]
+[gd_scene load_steps=2 format=3 uid="uid://mkvfdfcmvcti"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_lfnxh"]
-[ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="4_lsnkt"]
 
 [node name="level3" instance=ExtResource("1_lfnxh")]
 
-[node name="Human" parent="." index="2" instance=ExtResource("4_lsnkt")]
-
-[node name="Camera2D" type="Camera2D" parent="Human" index="5"]
-zoom = Vector2(1.6, 1.6)
-
-[node name="TileMap" parent="." index="3"]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 254, 255, 1, 0, 2, 0, 0, 0, 0, 0, 3, 0, 254, 255, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 254, 255, 1, 0, 1, 0, 0, 0, 0, 0, 5, 0, 254, 255, 1, 0, 3, 0, 0, 0, 0, 0)
+[node name="TileMap" parent="." index="2"]
+tile_map_data = PackedByteArray(0, 0, 246, 255, 253, 255, 1, 0, 2, 0, 0, 0, 0, 0, 247, 255, 253, 255, 1, 0, 0, 0, 0, 0, 0, 0, 248, 255, 253, 255, 1, 0, 1, 0, 0, 0, 0, 0, 249, 255, 253, 255, 1, 0, 3, 0, 0, 0, 0, 0)

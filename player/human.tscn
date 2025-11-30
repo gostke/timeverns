@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://efahif683vjg"]
+[gd_scene load_steps=18 format=3 uid="uid://efahif683vjg"]
 
 [ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
 [ext_resource type="Texture2D" uid="uid://b6s61xwevelc0" path="res://sprites/CHARACTER SPRITES.png" id="2_uuleo"]
@@ -84,10 +84,13 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kgn4"]
 radius = 20.0
-height = 88.0
+height = 74.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uuleo"]
 size = Vector2(53, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ou5u"]
+size = Vector2(40, 14)
 
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 2
@@ -110,7 +113,7 @@ animation = &"stand"
 autoplay = "stand"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -46)
+position = Vector2(1, -40)
 shape = SubResource("CapsuleShape2D_3kgn4")
 
 [node name="Flipper" parent="." instance=ExtResource("4_icdvv")]
@@ -137,5 +140,13 @@ one_shot = true
 [node name="DropTimer" type="Timer" parent="Timers"]
 wait_time = 0.2
 one_shot = true
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(0, -88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_1ou5u")
+one_way_collision = true
 
 [connection signal="timeout" from="Timers/CloneTimer" to="." method="_on_clone_timer_timeout"]
