@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnmjf8ylqqjhr"]
+[gd_scene load_steps=11 format=3 uid="uid://dnmjf8ylqqjhr"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_46lwt"]
 [ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="2_x25rp"]
 [ext_resource type="PackedScene" uid="uid://tfal2q2qqu0e" path="res://items/test_item.tscn" id="4_w7r7j"]
 [ext_resource type="PackedScene" uid="uid://dw6qwrqm6i7u8" path="res://levels/interactable/moving_platform.tscn" id="5_o6mel"]
+[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="6_e7anx"]
+[ext_resource type="PackedScene" uid="uid://fb52l6mkeubw" path="res://levels/interactable/jump_pressure_plate.tscn" id="7_ur00s"]
 [ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="8_wndkh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_46lwt"]
@@ -48,3 +50,10 @@ shape = SubResource("RectangleShape2D_o6mel")
 
 [node name="Sprite2D" parent="Decorations/Background3" index="0"]
 position = Vector2(85.99999, -326)
+
+[node name="asdfas" parent="." index="9" instance=ExtResource("6_e7anx")]
+position = Vector2(-187, -13)
+scale = Vector2(0.3665955, 0.3665955)
+
+[node name="JumpPressurePlate" parent="." index="10" instance=ExtResource("7_ur00s")]
+position = Vector2(278.00003, -18.000002)
