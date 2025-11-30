@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=4 uid="uid://mkvfdfcmvcti"]
+[gd_scene load_steps=6 format=4 uid="uid://mkvfdfcmvcti"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="2_hldmh"]
 [ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="3_gew73"]
+[ext_resource type="PackedScene" uid="uid://dwhjo8dxgkrs6" path="res://levels/interactable/moving_platform_ready.tscn" id="4_bmgug"]
+
+[sub_resource type="Curve2D" id="Curve2D_20opy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -374, -180, 0, 0, 0, 0, -124, -365)
+}
+point_count = 2
 
 [node name="level3" instance=ExtResource("1_lfnxh")]
+
+[node name="TileMap" parent="." index="0"]
+tile_map_data = PackedByteArray("AAALAP7/AQADAAAAAAAKAP7/AQACAAAAAADw//3/AQACAAAAAADx//3/AQAAAAAAAADy//3/AQABAAAAAADz//3/AQADAAAAAAD9//n/AQAAAAAAAAD+//n/AQABAAAAAADt//v/AQACAAAAAADu//v/AQADAAAAAADw//b/AQAAAAAAAADx//b/AQABAAAAAAABAPL/AQAAAAAAAAABAPP/AQAAAAAAAAABAPT/AQAAAAAAAAAEAPT/AQABAAAAAAAEAPP/AQABAAAAAAAEAPL/AQABAAAAAAACAPT/AQABAAAAAAADAPT/AQABAAAAAAAAAPH/AQABAAAAAAABAPH/AQABAAAAAAAEAPH/AQABAAAAAAAFAPH/AQABAAAAAAAGAPH/AQABAAAAAAAHAPH/AQABAAAAAAAIAPH/AQABAAAAAAA=")
 
 [node name="BombSpawner" parent="Entities" index="0" instance=ExtResource("2_hldmh")]
 position = Vector2(616, -25)
@@ -13,7 +23,14 @@ position = Vector2(616, -25)
 zoom = Vector2(1.4, 1.4)
 
 [node name="PressurePlate" parent="Entities" index="2" instance=ExtResource("3_gew73")]
-position = Vector2(-317, -144)
+position = Vector2(-589, -134)
 
-[node name="TileMap" parent="." index="2"]
-tile_map_data = PackedByteArray("AAD2//3/AQACAAAAAAD3//3/AQAAAAAAAAD4//3/AQABAAAAAAD5//3/AQADAAAAAAALAP7/AQADAAAAAAAKAP7/AQACAAAAAAA=")
+[node name="Path2D" type="Path2D" parent="Entities" index="3"]
+position = Vector2(-89.75998, -58.378372)
+scale = Vector2(0.76, 0.6756757)
+curve = SubResource("Curve2D_20opy")
+
+[node name="MovingPlatformReady" parent="Entities/Path2D" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("4_bmgug")]
+position = Vector2(-374, -180)
+speed = 5.0
+switch = NodePath("../../PressurePlate")

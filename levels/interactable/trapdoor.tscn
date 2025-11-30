@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnbsbpxgoo3js"]
+
+[ext_resource type="Texture2D" uid="uid://b5nu2uby7vjgs" path="res://sprites/TRAPDOORS_EXPLOSION_ORES.png" id="1_jp5xp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p8oq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu2pr"]
+atlas = ExtResource("1_jp5xp")
+region = Rect2(0, 250, 520, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g50py"]
+atlas = ExtResource("1_jp5xp")
+region = Rect2(520, 250, 520, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhyuo"]
+atlas = ExtResource("1_jp5xp")
+region = Rect2(1040, 250, 520, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jb7nr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu2pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g50py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhyuo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Trapdoor" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 3.1415927
+shape = SubResource("RectangleShape2D_7p8oq")
+one_way_collision = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jb7nr")

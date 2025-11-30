@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq14l4vblqgal"]
+[gd_scene load_steps=5 format=3 uid="uid://bq14l4vblqgal"]
 
-[ext_resource type="Texture2D" uid="uid://bqxn11rl4ljcr" path="res://icon.svg" id="1_23jca"]
 [ext_resource type="Script" uid="uid://be4rfh63eyhtl" path="res://levels/interactable/bomb_spawner.gd" id="1_qs4pr"]
+[ext_resource type="Texture2D" uid="uid://b5nu2uby7vjgs" path="res://sprites/TRAPDOORS_EXPLOSION_ORES.png" id="2_qs4pr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrsfg"]
+atlas = ExtResource("2_qs4pr")
+region = Rect2(2058, 389, 241, 170)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qs4pr"]
 size = Vector2(64, 65)
@@ -12,8 +16,8 @@ collision_mask = 4
 script = ExtResource("1_qs4pr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_23jca")
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_lrsfg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
