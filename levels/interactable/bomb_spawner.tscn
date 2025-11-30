@@ -8,7 +8,7 @@ atlas = ExtResource("2_qs4pr")
 region = Rect2(2058, 389, 241, 170)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qs4pr"]
-size = Vector2(64, 65)
+size = Vector2(72, 55)
 
 [node name="BombSpawner" type="Area2D"]
 collision_layer = 0
@@ -20,7 +20,7 @@ scale = Vector2(0.3, 0.3)
 texture = SubResource("AtlasTexture_lrsfg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_qs4pr")
 
 [node name="Timer" type="Timer" parent="."]

@@ -222,8 +222,6 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
 shape = SubResource("CircleShape2D_6uah4")
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-
 [node name="Countdown" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_38yse")
 
