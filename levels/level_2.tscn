@@ -15,7 +15,7 @@ next_level_id = 3
 switch = NodePath("../PressurePlate")
 
 [node name="PressurePlate" parent="." index="1" instance=ExtResource("3_v5uil")]
-position = Vector2(155, -7)
+position = Vector2(-282, -4)
 
 [node name="Human" parent="Entities" index="0"]
 position = Vector2(-384, -3)
@@ -27,4 +27,4 @@ tile_map_data = PackedByteArray("AAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAACAP3/AAAAAAA
 position = Vector2(-252, -78)
 
 [node name="JumpPressurePlate" parent="." index="8" instance=ExtResource("4_v5uil")]
-position = Vector2(-99, -5)
+position = Vector2(-79, -4)

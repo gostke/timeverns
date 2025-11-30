@@ -1,5 +1,9 @@
 extends Switch
 
+func _ready() -> void:
+	$Unpressed.visible = true
+	$Pressed.visible = false
+
 func _physics_process(_delta: float) -> void:
 	
 	if $Area2D.get_overlapping_bodies().is_empty():

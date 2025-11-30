@@ -2,6 +2,9 @@ extends Switch
 
 var is_visited: bool = false
 
+func _ready() -> void:
+	$Unpressed.visible = true
+	$Pressed.visible = false
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	
