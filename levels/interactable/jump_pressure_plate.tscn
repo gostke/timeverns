@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fb52l6mkeubw"]
 
 [ext_resource type="Script" uid="uid://dcm3hmdm62bxd" path="res://levels/interactable/jump_pressure_plate.gd" id="1_glgk0"]
-[ext_resource type="Texture2D" uid="uid://b05d5csjw8ghq" path="res://sprites/OBJECTS.png" id="2_w8nr0"]
+[ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="2_w8nr0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gl8xi"]
 atlas = ExtResource("2_w8nr0")
