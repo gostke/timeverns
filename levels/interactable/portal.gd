@@ -13,9 +13,9 @@ func _physics_process(_delta: float) -> void:
 	
 	if always_active or switch.is_pressed:
 		
-		#play sound only once when portal is activated
+		#play sound only once when portal is endactivated
 		if is_opening != true:
-			$opening.play()
+			$opening.play(0.5)
 			await $opening.finished
 			$opened.play()
 		is_opening = true

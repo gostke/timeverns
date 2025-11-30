@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=4 uid="uid://dc1if84isluw5"]
+
+[ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_erq1u"]
+[ext_resource type="PackedScene" uid="uid://dlqkbtk7pyxls" path="res://levels/interactable/breakable.tscn" id="2_r02ll"]
+[ext_resource type="PackedScene" uid="uid://dwhjo8dxgkrs6" path="res://levels/interactable/moving_platform_ready.tscn" id="3_26h77"]
+[ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/portal.tscn" id="4_1y5xd"]
+[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="4_g5mgy"]
+[ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="5_26h77"]
+[ext_resource type="PackedScene" uid="uid://fb52l6mkeubw" path="res://levels/interactable/jump_pressure_plate.tscn" id="6_1y5xd"]
+
+[sub_resource type="Curve2D" id="Curve2D_v5ho1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 507, -469, 0, 0, 0, 0, 515, -23)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_g5mgy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 250, -35, 0, 0, 0, 0, 253, -390)
+}
+point_count = 2
+
+[node name="level5" instance=ExtResource("1_erq1u")]
+
+[node name="TileMap" parent="." index="1"]
+tile_map_data = PackedByteArray("AADr//n/AQACAAAAAAAJAPf/AQAAAAAAAAAKAPf/AQAAAAAAAAALAPf/AQAAAAAAAAAMAPf/AQAAAAAAAAANAPf/AQAAAAAAAAAOAPf/AQAAAAAAAAAPAPf/AQAAAAAAAAAQAPf/AQAAAAAAAAARAPf/AQAAAAAAAAASAPf/AQAAAAAAAAATAPf/AQAAAAAAAAAUAPf/AQAAAAAAAAAVAPf/AQAAAAAAAAAWAPf/AQAAAAAAAAAXAPf/AQADAAAAAADs//n/AQAAAAAAAADt//n/AQAAAAAAAADu//n/AQAAAAAAAADv//n/AQAAAAAAAADw//n/AQAAAAAAAADx//n/AQAAAAAAAADy//n/AQAAAAAAAADz//n/AQAAAAAAAAD0//n/AQAAAAAAAAD1//n/AQADAAAAAAD5//z/AQACAAAAAAD6//z/AQADAAAAAAAIAPf/AwAAAAAAAAAIAPj/AwAAAAAAAAAIAPn/AwAAAAAAAAAIAPr/AwAAAAAAAAAIAPv/AwAAAAAAAAAIAPz/AwAAAAAAAAAIAP3/AwAAAAAAAAAIAP7/AwAAAAAAAAAIAP//AwAAAAAAAAAPAPH/AQAAAAAAAAAQAPH/AwAAAAAAAAARAPH/AQAAAAAAAAASAPH/AQABAAAAAAATAPH/AwAAAAAAAAAUAPH/AQAAAAAAAAAVAPH/AQABAAAAAAA=")
+
+[node name="Breakable3" parent="." index="2" instance=ExtResource("2_r02ll")]
+position = Vector2(618, -513)
+rotation = -1.568342
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Portal" parent="Entities" index="0" instance=ExtResource("4_1y5xd")]
+position = Vector2(739, -529)
+next_level_id = 3
+always_active = true
+
+[node name="Breakable" parent="Entities" index="1" instance=ExtResource("2_r02ll")]
+position = Vector2(617.99994, -435.99994)
+rotation = -1.568342
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Breakable2" parent="Entities" index="2" instance=ExtResource("2_r02ll")]
+position = Vector2(618, -589)
+rotation = -1.568342
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="Path2D" type="Path2D" parent="Entities" index="3"]
+curve = SubResource("Curve2D_v5ho1")
+
+[node name="MovingPlatformReady" parent="Entities/Path2D" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_26h77")]
+position = Vector2(507, -469)
+rotation = 1.5707964
+scale = Vector2(2, 2)
+speed = 6.0
+switch = NodePath("../../PressurePlate")
+
+[node name="Path2D2" type="Path2D" parent="Entities" index="4"]
+position = Vector2(0, -153)
+curve = SubResource("Curve2D_v5ho1")
+
+[node name="MovingPlatformReady" parent="Entities/Path2D2" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_26h77")]
+position = Vector2(507, -469)
+rotation = 1.5707964
+scale = Vector2(2, 2)
+speed = 6.0
+switch = NodePath("../../PressurePlate")
+
+[node name="PressurePlate" parent="Entities" index="5" instance=ExtResource("4_g5mgy")]
+position = Vector2(414, -405)
+
+[node name="Path2D3" type="Path2D" parent="Entities" index="6"]
+curve = SubResource("Curve2D_g5mgy")
+
+[node name="MovingPlatformReady" parent="Entities/Path2D3" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_26h77")]
+position = Vector2(250, -35)
+switch = NodePath("JumpPressurePlate")
+
+[node name="JumpPressurePlate" parent="Entities/Path2D3/MovingPlatformReady" index="1" instance=ExtResource("6_1y5xd")]
+position = Vector2(0, -18)
+
+[node name="Human" parent="Entities" index="7"]
+position = Vector2(-623, -307)
+
+[node name="BombSpawner" parent="." index="7" instance=ExtResource("5_26h77")]
+position = Vector2(-784, -333)

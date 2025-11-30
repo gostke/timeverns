@@ -13,7 +13,7 @@ func _physics_process(_delta: float) -> void:
 		
 	else:
 		if is_pressed == false:
-			$pressed.play()
+			$pressed.play(0.5)
 		is_pressed = true
 		
 	switch_sprites()

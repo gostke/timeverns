@@ -26,19 +26,24 @@ background_mode = 1
 
 [node name="level3" instance=ExtResource("1_lfnxh")]
 
-[node name="TileMap" parent="." index="0"]
+[node name="TileMap" parent="." index="1"]
 tile_map_data = PackedByteArray("AAALAP7/AQADAAAAAAAKAP7/AQACAAAAAADw//3/AQACAAAAAADx//3/AQAAAAAAAADy//3/AQABAAAAAADz//3/AQADAAAAAAD9//n/AQAAAAAAAAD+//n/AQABAAAAAADt//v/AQACAAAAAADu//v/AQADAAAAAADw//b/AQAAAAAAAADx//b/AQABAAAAAAAAAPH/AQABAAAAAAABAPH/AQABAAAAAAACAPH/AQAAAAAAAAADAPH/AQAAAAAAAAAEAPH/AQAAAAAAAAACAPL/AwAAAAAAAAACAPP/AwAAAAAAAAACAPT/AwAAAAAAAAACAPX/AQACAAAAAAAFAPT/AwAAAAAAAAAFAPX/AQABAAAAAAAMAPH/AQAAAAAAAAANAPH/AQABAAAAAAAKAPP/AwAAAAAAAAAKAPL/AwAAAAAAAAALAPH/AQAAAAAAAAAJAPX/AQADAAAAAAAIAPX/AQABAAAAAAAHAPX/AQABAAAAAAAGAPX/AQAAAAAAAADs//H/AQACAAAAAADt//H/AQADAAAAAAAJAPP/AwAAAAAAAAAKAPH/AQAAAAAAAAAJAPT/AwAAAAAAAAADAPX/AQAAAAAAAAAEAPX/AQABAAAAAAAOAPH/AQABAAAAAAAPAPH/AQADAAAAAAA=")
 
 [node name="BombSpawner" parent="Entities" index="0" instance=ExtResource("2_hldmh")]
 position = Vector2(622, -16)
 
-[node name="Camera2D" parent="Entities/Human" index="8"]
-zoom = Vector2(1.4, 1.4)
+[node name="Portal" parent="Entities" index="1" node_paths=PackedStringArray("switch") instance=ExtResource("6_8l0e1")]
+position = Vector2(535, -798)
+next_level_id = 1
+switch = NodePath("../PortalPressurePlate")
 
 [node name="PressurePlate" parent="Entities" index="2" instance=ExtResource("3_gew73")]
 position = Vector2(-589, -134)
 
-[node name="Path2D" type="Path2D" parent="Entities" index="3"]
+[node name="PortalPressurePlate" parent="Entities" index="3" instance=ExtResource("3_gew73")]
+position = Vector2(163, -501)
+
+[node name="Path2D" type="Path2D" parent="Entities" index="4"]
 position = Vector2(-89.75998, -58.378372)
 scale = Vector2(0.76, 0.6756757)
 curve = SubResource("Curve2D_20opy")
@@ -48,7 +53,7 @@ position = Vector2(-374, -180)
 speed = 5.0
 switch = NodePath("../../PressurePlate")
 
-[node name="Path2D2" type="Path2D" parent="Entities" index="4"]
+[node name="Path2D2" type="Path2D" parent="Entities" index="5"]
 curve = SubResource("Curve2D_bmgug")
 
 [node name="MovingPlatformReady" parent="Entities/Path2D2" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("4_bmgug")]
@@ -58,18 +63,14 @@ switch = NodePath("PressurePlate")
 [node name="PressurePlate" parent="Entities/Path2D2/MovingPlatformReady" index="1" instance=ExtResource("3_gew73")]
 position = Vector2(0, -22)
 
-[node name="PortalPressurePlate" parent="Entities" index="5" instance=ExtResource("3_gew73")]
-position = Vector2(163, -501)
+[node name="Camera2D" parent="Entities/Human" index="8"]
+zoom = Vector2(1.4, 1.4)
 
-[node name="Breakable" parent="Entities" index="6" instance=ExtResource("5_20opy")]
+[node name="Breakable" parent="Entities" index="7" instance=ExtResource("5_20opy")]
 position = Vector2(161, -517)
-
-[node name="Portal" parent="Entities" index="7" node_paths=PackedStringArray("switch") instance=ExtResource("6_8l0e1")]
-position = Vector2(535, -798)
-switch = NodePath("../PortalPressurePlate")
 
 [node name="CollisionShape2D" parent="Floor" index="0"]
 shape = SubResource("WorldBoundaryShape2D_wxtcu")
 
-[node name="WorldEnvironment" parent="." index="5"]
+[node name="WorldEnvironment" parent="." index="6"]
 environment = SubResource("Environment_8424m")
