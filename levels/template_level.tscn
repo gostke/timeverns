@@ -15,6 +15,7 @@ background_mode = 1
 [node name="TemplateLevel" type="Node2D"]
 
 [node name="Entities" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="Human" parent="Entities" instance=ExtResource("1_ktgux")]
 
@@ -23,23 +24,29 @@ position = Vector2(0, -64)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Items" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 scale = Vector2(0.15, 0.15)
 tile_set = ExtResource("1_wxtcu")
+metadata/_edit_lock_ = true
 
 [node name="Floor" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape2D_wxtcu")
 
 [node name="Decorations" type="Node2D" parent="."]
-position = Vector2(-3, -184)
+position = Vector2(0, -184)
 scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="Background3" type="Parallax2D" parent="Decorations"]
 z_index = 1
-scroll_offset = Vector2(-46, -632)
+scroll_offset = Vector2(0, -632)
 
 [node name="Sprite2D" type="Sprite2D" parent="Decorations/Background3"]
 modulate = Color(0, 0, 0, 1)
@@ -50,7 +57,7 @@ texture = ExtResource("2_cllgf")
 [node name="Background" type="Parallax2D" parent="Decorations"]
 z_index = -2
 scroll_scale = Vector2(0.8, 0.8)
-scroll_offset = Vector2(-4, -472)
+scroll_offset = Vector2(0, -474)
 
 [node name="Sprite2D" type="Sprite2D" parent="Decorations/Background"]
 modulate = Color(0.38928655, 0.38928664, 0.38928658, 1)
@@ -59,12 +66,13 @@ texture = ExtResource("3_3jtrw")
 [node name="Floor" type="Sprite2D" parent="Decorations"]
 modulate = Color(0.446777, 0.44677705, 0.44677705, 1)
 z_index = -1
+position = Vector2(2, 0)
 texture = ExtResource("2_8dr53")
 
 [node name="Foreground" type="Parallax2D" parent="Decorations"]
 z_index = 1
 scroll_scale = Vector2(1.2, 1.2)
-scroll_offset = Vector2(24, -138)
+scroll_offset = Vector2(0, -140)
 
 [node name="Sprite2D" type="Sprite2D" parent="Decorations/Foreground"]
 scale = Vector2(1.2, 1.2)

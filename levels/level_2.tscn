@@ -1,18 +1,27 @@
-[gd_scene load_steps=3 format=4 uid="uid://b76umv2mgaeeh"]
+[gd_scene load_steps=4 format=4 uid="uid://b76umv2mgaeeh"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_0srwa"]
 [ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/portal.tscn" id="3_0srwa"]
+[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="3_v5uil"]
 
 [node name="level_2" instance=ExtResource("1_0srwa")]
 
-[node name="Portal" parent="." index="0" instance=ExtResource("3_0srwa")]
+[node name="Portal" parent="." index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_0srwa")]
 position = Vector2(-623, -133)
 rotation = 3.1415927
 scale = Vector2(1, -1)
-next_level_id = 1
+next_level_id = 3
+switch = NodePath("../Entities/PressurePlate")
 
 [node name="Human" parent="Entities" index="0"]
 position = Vector2(-384, -3)
+speed = null
+
+[node name="PressurePlate" parent="Entities" index="1" instance=ExtResource("3_v5uil")]
+position = Vector2(-127, -10)
 
 [node name="TileMap" parent="." index="3"]
-tile_map_data = PackedByteArray("AAABAP//AQAEAAAAAAABAP7/AQAEAAAAAAABAP3/AQAEAAAAAAABAPz/AQAEAAAAAAACAPz/AQAEAAAAAAADAPz/AQAEAAAAAAAEAPz/AQAEAAAAAAAFAPz/AQAEAAAAAAALAPz/AQAEAAAAAAAMAPz/AQAEAAAAAAANAPz/AQAEAAAAAAAOAPz/AQAEAAAAAAAPAPz/AQAEAAAAAAAQAPz/AQAEAAAAAAARAPz/AQAEAAAAAAASAPz/AQAEAAAAAAATAPz/AQAEAAAAAAAUAPz/AQAEAAAAAAAGAPz/AQAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAP//AQAEAAAAAAABAP7/AQAEAAAAAAABAP3/AQAEAAAAAAABAPz/AQAEAAAAAAACAPz/AQAEAAAAAAADAPz/AQAEAAAAAAAEAPz/AQAEAAAAAAAFAPz/AQAEAAAAAAAGAPz/AQAEAAAAAAA=")
+
+[node name="Sprite2D" parent="Decorations/Background3" index="0"]
+position = Vector2(-252, -78)

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dey7tis2cnjn"]
+
+[ext_resource type="Shader" uid="uid://v8sgmaijqbp" path="res://player/colour_replace.gdshader" id="1_pibv4"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_pibv4")
+shader_parameter/old_color = Color(0, 1, 0, 1)
+shader_parameter/new_color = Color(1, 1, 1, 1)
+shader_parameter/bias = 0.595
