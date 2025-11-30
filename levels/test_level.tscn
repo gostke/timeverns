@@ -32,7 +32,7 @@ curve = SubResource("Curve2D_e7anx")
 
 [node name="MovingPlatformReady" parent="Path2D" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("4_o6mel")]
 position = Vector2(121, 3)
-switch = NodePath("../../PressurePlate")
 
 [node name="PressurePlate" parent="." index="5" instance=ExtResource("6_e7anx")]
 position = Vector2(-131, 2)
+

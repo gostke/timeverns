@@ -25,7 +25,6 @@ texture = ExtResource("2_5722l")
 
 [node name="Human" parent="." index="3" instance=ExtResource("2_v5uil")]
 position = Vector2(316, 616)
-is_player = true
 
 [node name="Door" parent="." index="4" instance=ExtResource("3_0srwa")]
 position = Vector2(979, 555)
