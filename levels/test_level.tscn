@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-[gd_scene load_steps=11 format=3 uid="uid://dnmjf8ylqqjhr"]
-=======
-[gd_scene load_steps=8 format=3 uid="uid://dnmjf8ylqqjhr"]
->>>>>>> 95d4ec0036b41f267387bcb4c5f184de5f0f3f1a
+[gd_scene load_steps=9 format=3 uid="uid://dbvfw3n2dqcv6"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_46lwt"]
+[ext_resource type="PackedScene" uid="uid://dlqkbtk7pyxls" path="res://levels/interactable/breakable.tscn" id="3_e7anx"]
 [ext_resource type="PackedScene" uid="uid://dwhjo8dxgkrs6" path="res://levels/interactable/moving_platform_ready.tscn" id="4_o6mel"]
 [ext_resource type="PackedScene" uid="uid://tfal2q2qqu0e" path="res://items/test_item.tscn" id="4_w7r7j"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dw6qwrqm6i7u8" path="res://levels/interactable/moving_platform.tscn" id="5_o6mel"]
 [ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="6_e7anx"]
-[ext_resource type="PackedScene" uid="uid://fb52l6mkeubw" path="res://levels/interactable/jump_pressure_plate.tscn" id="7_ur00s"]
-=======
-[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="6_e7anx"]
->>>>>>> 95d4ec0036b41f267387bcb4c5f184de5f0f3f1a
 [ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="8_wndkh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_46lwt"]
@@ -34,33 +25,18 @@ shape = SubResource("WorldBoundaryShape2D_46lwt")
 [node name="BombSpawner" parent="." index="1" instance=ExtResource("8_wndkh")]
 position = Vector2(-412, -33)
 
-[node name="TestItem" parent="Items" index="0" instance=ExtResource("4_w7r7j")]
-position = Vector2(-317, -17)
+[node name="Breakable" parent="Entities" index="1" instance=ExtResource("3_e7anx")]
+position = Vector2(-754, -26)
 
 [node name="Path2D" type="Path2D" parent="." index="4"]
 curve = SubResource("Curve2D_e7anx")
 
 [node name="MovingPlatformReady" parent="Path2D" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("4_o6mel")]
 position = Vector2(121, 3)
+switch = NodePath("../../PressurePlate")
 
 [node name="PressurePlate" parent="." index="5" instance=ExtResource("6_e7anx")]
 position = Vector2(-131, 2)
 
-<<<<<<< HEAD
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Path2D/MovingPlatform" index="1"]
-sync_to_physics = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/MovingPlatform/AnimatableBody2D" index="0"]
-shape = SubResource("RectangleShape2D_o6mel")
-
-[node name="Sprite2D" parent="Decorations/Background3" index="0"]
-position = Vector2(85.99999, -326)
-
-[node name="asdfas" parent="." index="9" instance=ExtResource("6_e7anx")]
-position = Vector2(-187, -13)
-scale = Vector2(0.3665955, 0.3665955)
-
-[node name="JumpPressurePlate" parent="." index="10" instance=ExtResource("7_ur00s")]
-position = Vector2(278.00003, -18.000002)
-=======
->>>>>>> 95d4ec0036b41f267387bcb4c5f184de5f0f3f1a
+[node name="TestItem" parent="Items" index="0" instance=ExtResource("4_w7r7j")]
+position = Vector2(-317, -17)

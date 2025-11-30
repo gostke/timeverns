@@ -15,6 +15,9 @@ const SPEED_MULTIPLIER: float = 100
 @onready var human_scene:= preload("uid://efahif683vjg")
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+# what the helly...
+var was_on_floor: bool = false
+
 # 50 frames per second
 @onready var frame_count: int = int(clone_timer.wait_time * 50)
 var frames: Array[Frame]
@@ -24,8 +27,16 @@ var clones: Array[Human] = [null, null, null]
 
 @onready var flipper: Flipper = $Flipper
 @onready var item_picker: ItemPicker = $Flipper/ItemPicker
+@onready var thorns: AnimatedSprite2D = $Thorns
+
+var can_change_anim: bool = true
 
 signal on_loop_reset
+signal on_throw
+signal on_pick_up
+signal on_walk
+signal on_jump
+signal on_fall
 
 func _ready() -> void:
 	clone_timer.start()
@@ -46,10 +57,12 @@ func summon_clone(idx: int) -> void:
 	clone.global_position = clone.frames[0].global_pos
 	clone.flipper.flipped = clone.frames[0].flipped
 	clone.sprite.flip_h = clone.frames[0].flipped
+	clone.thorns.flip_h = clone.frames[0].flipped
+	clone.thorns.visible = true
 	clone.sprite.get_material().set_shader_parameter("new_color", constants.CLONE_COLOURS_VECTOR[idx])
 	var new_colour := constants.CLONE_COLOURS[idx]
-	new_colour.a = 0.2
-	#clone.modulate = clone.modulate.blend(new_colour)
+	new_colour.a = 1
+	clone.thorns.modulate = clone.thorns.modulate.blend(new_colour)
 	clone.get_node("Timers/CloneTimer").start()
 	clones[idx] = clone
 	clone_timer.start()
@@ -66,21 +79,40 @@ func _process(_delta: float) -> void:
 	if !is_zero_approx(velocity.x):
 		if velocity.x < 0:
 			sprite.flip_h = false
+			thorns.flip_h = false
 			flipper.flip(false)
 		else:
 			sprite.flip_h = true
+			thorns.flip_h = true
 			flipper.flip(true)
-		# sin
-		sprite.play("walk")
+		# sins
+		if can_change_anim:
+			sprite.play("walk")
+			thorns.play("walk")
+		if is_zero_approx(velocity.y):
+			on_walk.emit()
 	else:
 		# sin 2
-		sprite.play("stand")
+		if can_change_anim:
+			sprite.play("stand")
+			thorns.play("stand")
 	
 	if !is_on_floor():
 		if velocity.y < 0:
-			sprite.play("jump")
+			if can_change_anim:
+				sprite.play("jump")
+				thorns.play("jump")
+			if was_on_floor:
+				on_jump.emit()
 		else:
-			sprite.play("fall")
+			if can_change_anim:
+				sprite.play("fall")
+				thorns.play("fall")
+	# game jam code.........
+	if is_on_floor():
+		if !was_on_floor:
+			on_fall.emit()
+	was_on_floor = is_on_floor()		
 		
 func _physics_process(_delta: float) -> void:
 	velocity.x *= drag
@@ -132,8 +164,9 @@ func interacting(frame: Frame) -> void:
 	if Input.is_action_just_released("drop"):
 		if !drop_timer.is_stopped():
 			use_and_add_action(ActionThrowItem.new(), frame)
-		else:
-			use_and_add_action(ActionDropItem.new(), frame)
+			drop_timer.stop()
+	if Input.is_action_pressed("drop") and drop_timer.is_stopped():
+		use_and_add_action(ActionDropItem.new(), frame)
 	if Input.is_action_just_pressed("use"):
 			use_and_add_action(ActionPickItem.new(), frame)
 		
@@ -155,4 +188,10 @@ func handle_clone() -> void:
 		global_position = frames[0].global_pos
 		flipper.flip(frames[0].flipped)
 		sprite.flip_h = frames[0].flipped
+		thorns.flip_h = frames[0].flipped
 		
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if sprite.animation == "throw":
+		can_change_anim = true
