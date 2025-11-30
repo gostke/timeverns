@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlqkbtk7pyxls"]
+
+[ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="1_40kqq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eh2yc"]
+atlas = ExtResource("1_40kqq")
+
+[node name="Breakable" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_eh2yc")

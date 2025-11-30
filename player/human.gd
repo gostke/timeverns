@@ -130,7 +130,7 @@ func interacting(frame: Frame) -> void:
 	if Input.is_action_just_pressed("drop"):
 		drop_timer.start()
 	if Input.is_action_just_released("drop"):
-		if drop_timer.is_stopped():
+		if !drop_timer.is_stopped():
 			use_and_add_action(ActionThrowItem.new(), frame)
 		else:
 			use_and_add_action(ActionDropItem.new(), frame)
