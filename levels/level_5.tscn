@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=4 uid="uid://cxp1gr8msxg7u"]
+
+[ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_erq1u"]
+[ext_resource type="PackedScene" path="res://levels/interactable/breakable.tscn" id="2_r02ll"]
+[ext_resource type="PackedScene" path="res://levels/interactable/moving_platform_ready.tscn" id="3_26h77"]
+[ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/portal.tscn" id="4_1y5xd"]
+[ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="5_26h77"]
+[ext_resource type="PackedScene" uid="uid://fb52l6mkeubw" path="res://levels/interactable/jump_pressure_plate.tscn" id="6_1y5xd"]
+
+[node name="level5" instance=ExtResource("1_erq1u")]
+
+[node name="TileMap" parent="." index="0"]
+tile_map_data = PackedByteArray("AADr//n/AQACAAAAAAAIAP//AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAPn/AAAAAAAAAAAIAPj/AAAAAAAAAAAIAPf/AAAAAAAAAAAJAPf/AQAAAAAAAAAKAPf/AQAAAAAAAAALAPf/AQAAAAAAAAAMAPf/AQAAAAAAAAANAPf/AQAAAAAAAAAOAPf/AQAAAAAAAAAPAPf/AQAAAAAAAAAQAPf/AQAAAAAAAAARAPf/AQAAAAAAAAASAPf/AQAAAAAAAAATAPf/AQAAAAAAAAAUAPf/AQAAAAAAAAAVAPf/AQAAAAAAAAAWAPf/AQAAAAAAAAAXAPf/AQADAAAAAADs//n/AQAAAAAAAADt//n/AQAAAAAAAADu//n/AQAAAAAAAADv//n/AQAAAAAAAADw//n/AQAAAAAAAADx//n/AQAAAAAAAADy//n/AQAAAAAAAADz//n/AQAAAAAAAAD0//n/AQAAAAAAAAD1//n/AQADAAAAAAD5//z/AQACAAAAAAD6//z/AQADAAAAAAA=")
+
+[node name="Human" parent="Entities" index="0"]
+position = Vector2(-623, -307)
+
+[node name="Breakable" parent="Entities" index="1" instance=ExtResource("2_r02ll")]
+position = Vector2(617.99994, -435.99994)
+rotation = -1.568342
+
+[node name="Breakable2" parent="Entities" index="2" instance=ExtResource("2_r02ll")]
+position = Vector2(618, -589)
+rotation = -1.568342
+
+[node name="Breakable3" parent="." index="2" instance=ExtResource("2_r02ll")]
+position = Vector2(618, -513)
+rotation = -1.568342
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="MovingPlatformReady" parent="." index="7" instance=ExtResource("3_26h77")]
+position = Vector2(256, -18)
+
+[node name="Portal" parent="." index="8" instance=ExtResource("4_1y5xd")]
+position = Vector2(739, -529)
+
+[node name="BombSpawner" parent="." index="9" instance=ExtResource("5_26h77")]
+position = Vector2(-784, -333)
+
+[node name="JumpPressurePlate" parent="." index="10" instance=ExtResource("6_1y5xd")]
+position = Vector2(-31, -2)
