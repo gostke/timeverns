@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwhjo8dxgkrs6"]
+
+[ext_resource type="PackedScene" uid="uid://dw6qwrqm6i7u8" path="res://levels/interactable/moving_platform.tscn" id="1_pjvsi"]
+[ext_resource type="Texture2D" uid="uid://b05d5csjw8ghq" path="res://sprites/OBJECTS.png" id="2_7jaoe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oylr"]
+atlas = ExtResource("2_7jaoe")
+region = Rect2(2089, 260, 522, 228)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jaoe"]
+size = Vector2(76, 32)
+
+[node name="MovingPlatformReady" instance=ExtResource("1_pjvsi")]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." index="0"]
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D" index="0"]
+scale = Vector2(0.15, 0.15)
+texture = SubResource("AtlasTexture_4oylr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" index="1"]
+shape = SubResource("RectangleShape2D_7jaoe")

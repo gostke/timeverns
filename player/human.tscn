@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://efahif683vjg"]
+[gd_scene load_steps=19 format=3 uid="uid://efahif683vjg"]
 
 [ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
+[ext_resource type="Material" uid="uid://dey7tis2cnjn" path="res://player/human_shader.tres" id="2_54xnq"]
 [ext_resource type="Texture2D" uid="uid://b6s61xwevelc0" path="res://sprites/CHARACTER SPRITES.png" id="2_uuleo"]
 [ext_resource type="Script" uid="uid://tjdjrpe7ukdo" path="res://player/shadows.gd" id="3_uuleo"]
 [ext_resource type="PackedScene" uid="uid://c6joq0plpufyn" path="res://player/flipper.tscn" id="4_icdvv"]
@@ -101,11 +102,13 @@ mass = 2.0
 drag = 0.2
 
 [node name="Traces" type="Node2D" parent="."]
+material = ExtResource("2_54xnq")
 script = ExtResource("3_uuleo")
 trace_division = 20
 text_temp = SubResource("AtlasTexture_uuleo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_54xnq")
 position = Vector2(1.9999998, -52)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_vgf6f")
@@ -122,7 +125,7 @@ shape = SubResource("CapsuleShape2D_3kgn4")
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("5_1ou5u")
-throw_force = Vector2(800, -400)
+throw_force = Vector2(600, -600)
 
 [node name="Hand" type="Marker2D" parent="Flipper/ItemPicker"]
 position = Vector2(-28, -54)
@@ -143,6 +146,7 @@ one_shot = true
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 position = Vector2(0, -88)
+sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
 position = Vector2(-1, 1)

@@ -46,6 +46,10 @@ func summon_clone(idx: int) -> void:
 	clone.global_position = clone.frames[0].global_pos
 	clone.flipper.flipped = clone.frames[0].flipped
 	clone.sprite.flip_h = clone.frames[0].flipped
+	clone.sprite.get_material().set_shader_parameter("new_color", constants.CLONE_COLOURS_VECTOR[idx])
+	var new_colour := constants.CLONE_COLOURS[idx]
+	new_colour.a = 0.2
+	#clone.modulate = clone.modulate.blend(new_colour)
 	clone.get_node("Timers/CloneTimer").start()
 	clones[idx] = clone
 	clone_timer.start()
