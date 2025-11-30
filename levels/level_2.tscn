@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://b76umv2mgaeeh"]
+[gd_scene load_steps=4 format=4 uid="uid://b76umv2mgaeeh"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_0srwa"]
 [ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/portal.tscn" id="3_0srwa"]
 [ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="3_v5uil"]
-[ext_resource type="PackedScene" uid="uid://fb52l6mkeubw" path="res://levels/interactable/jump_pressure_plate.tscn" id="4_v5uil"]
 
 [node name="level_2" instance=ExtResource("1_0srwa")]
 
@@ -15,16 +14,13 @@ next_level_id = 3
 switch = NodePath("../PressurePlate")
 
 [node name="PressurePlate" parent="." index="1" instance=ExtResource("3_v5uil")]
-position = Vector2(155, -7)
+position = Vector2(172, -7)
 
 [node name="Human" parent="Entities" index="0"]
 position = Vector2(-384, -3)
 
 [node name="TileMap" parent="." index="4"]
-tile_map_data = PackedByteArray("AAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAACAP3/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAACAP7/AwAAAAAAAAACAP3/AwAAAAAAAAA=")
 
 [node name="Sprite2D" parent="Decorations/Background3" index="0"]
 position = Vector2(-252, -78)
-
-[node name="JumpPressurePlate" parent="." index="8" instance=ExtResource("4_v5uil")]
-position = Vector2(-99, -5)
