@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
 [ext_resource type="Material" uid="uid://dey7tis2cnjn" path="res://player/human_shader.tres" id="2_54xnq"]
-[ext_resource type="Texture2D" uid="uid://b6s61xwevelc0" path="res://sprites/CHARACTER SPRITES.png" id="2_uuleo"]
+[ext_resource type="Texture2D" uid="uid://dhla0ambhf7to" path="res://sprites/CHARACTER SPRITES.png" id="2_uuleo"]
 [ext_resource type="Script" uid="uid://tjdjrpe7ukdo" path="res://player/shadows.gd" id="3_uuleo"]
 [ext_resource type="PackedScene" uid="uid://c6joq0plpufyn" path="res://player/flipper.tscn" id="4_icdvv"]
 [ext_resource type="Script" uid="uid://bnmalnk8mg7bb" path="res://player/item_picker.gd" id="5_1ou5u"]
