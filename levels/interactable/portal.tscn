@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr24k45xsf0ec"]
+
+[ext_resource type="Script" uid="uid://8tw3aksbcar2" path="res://levels/interactable/portal.gd" id="1_m52sf"]
+[ext_resource type="Texture2D" uid="uid://cfb4dlobl6rh3" path="res://sprites/PORTAL.png" id="2_m52sf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m52sf"]
+atlas = ExtResource("2_m52sf")
+region = Rect2(0, 0, 850, 1160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhm66"]
+atlas = ExtResource("2_m52sf")
+region = Rect2(850, 0, 850, 1160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opa0k"]
+atlas = ExtResource("2_m52sf")
+region = Rect2(1700, 0, 850, 1160)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o8yml"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m52sf")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhm66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opa0k")
+}],
+"loop": true,
+"name": &"opened",
+"speed": 5.0
+}]
+
+[node name="Portal" type="Area2D"]
+visibility_layer = 2
+collision_mask = 2
+script = ExtResource("1_m52sf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.233, 0.233)
+sprite_frames = SubResource("SpriteFrames_o8yml")
+animation = &"opened"
+frame = 1
+frame_progress = 0.1427154
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-27, -80, -26, 113, -7, 110, 9, 91, 22, 28, 18, -30, -3, -67)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

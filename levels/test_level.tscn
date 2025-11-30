@@ -1,4 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnmjf8ylqqjhr"]
+<<<<<<< HEAD
+[gd_scene load_steps=11 format=3 uid="uid://dnmjf8ylqqjhr"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_46lwt"]
 [ext_resource type="PackedScene" uid="uid://dlqkbtk7pyxls" path="res://levels/interactable/breakable.tscn" id="3_e7anx"]
@@ -39,3 +40,9 @@ position = Vector2(-131, 2)
 
 [node name="TestItem" parent="Items" index="0" instance=ExtResource("4_w7r7j")]
 position = Vector2(-317, -17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/MovingPlatform/AnimatableBody2D" index="0"]
+shape = SubResource("RectangleShape2D_o6mel")
+
+[node name="Sprite2D" parent="Decorations/Background3" index="0"]
+position = Vector2(85.99999, -326)

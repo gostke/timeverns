@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfb4dlobl6rh3"
-path="res://.godot/imported/PORTAL.png-2a5401feae733afafcd73a5ae036b9dd.ctex"
+uid="uid://b3070tpesowt3"
+path="res://.godot/imported/Thorns.png-c2a3cfb2cf70f25d7d35fcd9883867f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/PORTAL.png"
-dest_files=["res://.godot/imported/PORTAL.png-2a5401feae733afafcd73a5ae036b9dd.ctex"]
+source_file="res://sprites/Thorns.png"
+dest_files=["res://.godot/imported/Thorns.png-c2a3cfb2cf70f25d7d35fcd9883867f4.ctex"]
 
 [params]
 

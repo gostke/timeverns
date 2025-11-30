@@ -1,37 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://b76umv2mgaeeh"]
+[gd_scene load_steps=4 format=4 uid="uid://b76umv2mgaeeh"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_0srwa"]
-[ext_resource type="Texture2D" uid="uid://bdxcgeu0tvdwf" path="res://sprites/FLOOR 2.png" id="2_5722l"]
-[ext_resource type="PackedScene" uid="uid://efahif683vjg" path="res://player/human.tscn" id="2_v5uil"]
-[ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/door.tscn" id="3_0srwa"]
-[ext_resource type="Texture2D" uid="uid://be7sbf68iy3vj" path="res://sprites/FLOOR 1.png" id="6_ilhis"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5722l"]
+[ext_resource type="PackedScene" uid="uid://cr24k45xsf0ec" path="res://levels/interactable/portal.tscn" id="3_0srwa"]
+[ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="3_v5uil"]
 
 [node name="level_2" instance=ExtResource("1_0srwa")]
 
-[node name="WorldFloor" type="StaticBody2D" parent="." index="0"]
-position = Vector2(23, -34)
+[node name="Portal" parent="." index="0" node_paths=PackedStringArray("switch") instance=ExtResource("3_0srwa")]
+position = Vector2(-623, -133)
+rotation = 3.1415927
+scale = Vector2(1, -1)
+next_level_id = 3
+switch = NodePath("../PressurePlate")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldFloor" index="0"]
-position = Vector2(621, 651)
-scale = Vector2(-6.72764, 1.4730161)
-shape = SubResource("WorldBoundaryShape2D_5722l")
+[node name="PressurePlate" parent="." index="1" instance=ExtResource("3_v5uil")]
+position = Vector2(155, -7)
 
-[node name="FloorSecond" type="Sprite2D" parent="WorldFloor" index="1"]
-position = Vector2(1008, 425)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_5722l")
+[node name="Human" parent="Entities" index="0"]
+position = Vector2(-384, -3)
 
-[node name="Human" parent="." index="3" instance=ExtResource("2_v5uil")]
-position = Vector2(316, 616)
+[node name="TileMap" parent="." index="4"]
+tile_map_data = PackedByteArray("AAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAACAP3/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAA=")
 
-[node name="Door" parent="." index="4" instance=ExtResource("3_0srwa")]
-position = Vector2(979, 555)
-is_open = true
-next_level_id = 1
+[node name="Sprite2D" parent="Decorations/Background3" index="0"]
+position = Vector2(-252, -78)
 
-[node name="FloorFIrst" type="Sprite2D" parent="." index="5"]
-position = Vector2(1008, 356)
-scale = Vector2(0.63076925, 0.63076925)
-texture = ExtResource("6_ilhis")
+[node name="PressurePlate2" parent="." index="8" instance=ExtResource("3_v5uil")]
+position = Vector2(-145, -6)

@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbro1fup3i8uv"]
+[gd_scene load_steps=8 format=3 uid="uid://cbro1fup3i8uv"]
 
 [ext_resource type="Script" uid="uid://dfvdwpkrwn0wx" path="res://levels/interactable/pressure_plate.gd" id="1_n667r"]
 [ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="2_2hrdp"]
+[ext_resource type="AudioStream" uid="uid://dap52fu3rmgqb" path="res://music/buttonPress.wav" id="3_bef3c"]
+[ext_resource type="AudioStream" uid="uid://c54t2tyw5lkbs" path="res://music/buttonUnpress.wav" id="4_53jfg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bef3c"]
 atlas = ExtResource("2_2hrdp")
@@ -32,3 +34,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1.5, 4.5)
 shape = SubResource("RectangleShape2D_xaqss")
+
+[node name="pressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bef3c")
+max_distance = 150.0
+attenuation = 0.14865172
+
+[node name="unpressed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_53jfg")
+max_distance = 150.0
+attenuation = 0.12074219
