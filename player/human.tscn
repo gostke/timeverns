@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://efahif683vjg"]
+[gd_scene load_steps=34 format=3 uid="uid://efahif683vjg"]
 
 [ext_resource type="Script" uid="uid://duohqmu5lvvv" path="res://player/human.gd" id="1_3kgn4"]
 [ext_resource type="Material" uid="uid://dey7tis2cnjn" path="res://player/human_shader.tres" id="2_54xnq"]
@@ -33,6 +33,14 @@ region = Rect2(50, 0, 680, 1150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_icdvv"]
 atlas = ExtResource("2_uuleo")
 region = Rect2(50, 1150, 680, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5q14"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(2238, 0, 746, 1150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtvd4"]
+atlas = ExtResource("2_uuleo")
+region = Rect2(1492, 0, 746, 1150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ou5u"]
 atlas = ExtResource("2_uuleo")
@@ -78,6 +86,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w5q14")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_dtvd4")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1ou5u")
 }, {
 "duration": 1.0,
@@ -100,6 +119,19 @@ height = 74.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uuleo"]
 size = Vector2(53, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5q14"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ou5u"]
 size = Vector2(40, 14)
@@ -125,7 +157,7 @@ material = ExtResource("2_54xnq")
 position = Vector2(1.9999998, -52)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_vgf6f")
-animation = &"stand"
+animation = &"walk"
 autoplay = "stand"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -146,6 +178,13 @@ position = Vector2(-28, -54)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flipper/ItemPicker"]
 position = Vector2(-38.5, -46.5)
 shape = SubResource("RectangleShape2D_uuleo")
+
+[node name="Thorns" type="AnimatedSprite2D" parent="Flipper"]
+visible = false
+position = Vector2(11, -46)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_w5q14")
+animation = &"stand"
 
 [node name="Timers" type="Node" parent="."]
 
@@ -174,4 +213,5 @@ walk_sounds = Array[AudioStream]([ExtResource("8_8eh2a"), ExtResource("9_3yb6j")
 pick_sound = ExtResource("16_w5q14")
 throw_sound = ExtResource("17_dtvd4")
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timers/CloneTimer" to="." method="_on_clone_timer_timeout"]

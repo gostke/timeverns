@@ -27,6 +27,9 @@ var clones: Array[Human] = [null, null, null]
 
 @onready var flipper: Flipper = $Flipper
 @onready var item_picker: ItemPicker = $Flipper/ItemPicker
+@onready var thorns: AnimatedSprite2D = $Flipper/Thorns
+
+var can_change_anim: bool = true
 
 signal on_loop_reset
 signal on_throw
@@ -78,21 +81,27 @@ func _process(_delta: float) -> void:
 		else:
 			sprite.flip_h = true
 			flipper.flip(true)
-		# sin
-		sprite.play("walk")
+		# sins
+		if can_change_anim:
+			sprite.play("walk")
+			thorns.play("walk")
 		if is_zero_approx(velocity.y):
 			on_walk.emit()
 	else:
 		# sin 2
-		sprite.play("stand")
+		if can_change_anim:
+			sprite.play("stand")
+			thorns.play("stand")
 	
 	if !is_on_floor():
 		if velocity.y < 0:
-			sprite.play("jump")
+			if can_change_anim:
+				sprite.play("jump")
 			if was_on_floor:
 				on_jump.emit()
 		else:
-			sprite.play("fall")
+			if can_change_anim:
+				sprite.play("fall")
 	# game jam code.........
 	if is_on_floor():
 		if !was_on_floor:
@@ -174,3 +183,8 @@ func handle_clone() -> void:
 		flipper.flip(frames[0].flipped)
 		sprite.flip_h = frames[0].flipped
 		
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if sprite.animation == "throw":
+		can_change_anim = true

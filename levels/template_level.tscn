@@ -88,5 +88,11 @@ scroll_offset = Vector2(0, -140)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_8424m")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Decorations/Foreground"]
+position = Vector2(0, -730)
+rotation = 3.1415927
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_8424m")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8424m")
