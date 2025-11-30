@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlqkbtk7pyxls"]
+[gd_scene load_steps=5 format=3 uid="uid://dlqkbtk7pyxls"]
 
 [ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="1_40kqq"]
+[ext_resource type="Script" uid="uid://curwq4uh8v3yk" path="res://levels/interactable/breakable.gd" id="1_eh2yc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eh2yc"]
 atlas = ExtResource("1_40kqq")
+region = Rect2(1066, 259, 533, 247)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40kqq"]
+size = Vector2(78, 33)
 
 [node name="Breakable" type="StaticBody2D"]
+script = ExtResource("1_eh2yc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
 texture = SubResource("AtlasTexture_eh2yc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_40kqq")

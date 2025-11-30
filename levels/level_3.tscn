@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://mkvfdfcmvcti"]
+[gd_scene load_steps=8 format=4 uid="uid://mkvfdfcmvcti"]
 
 [ext_resource type="PackedScene" uid="uid://cwisekllj2ety" path="res://levels/template_level.tscn" id="1_lfnxh"]
 [ext_resource type="PackedScene" uid="uid://bq14l4vblqgal" path="res://levels/interactable/bomb_spawner.tscn" id="2_hldmh"]
 [ext_resource type="PackedScene" uid="uid://cbro1fup3i8uv" path="res://levels/interactable/pressure_plate.tscn" id="3_gew73"]
 [ext_resource type="PackedScene" uid="uid://dwhjo8dxgkrs6" path="res://levels/interactable/moving_platform_ready.tscn" id="4_bmgug"]
+[ext_resource type="PackedScene" uid="uid://dlqkbtk7pyxls" path="res://levels/interactable/breakable.tscn" id="5_20opy"]
 
 [sub_resource type="Curve2D" id="Curve2D_20opy"]
 _data = {
@@ -13,14 +14,14 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_bmgug"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -582, -781, 0, 0, 0, 0, -100, -788)
+"points": PackedVector2Array(0, 0, 0, 0, -888, -656, 0, 0, 0, 0, -888, -786, 0, 0, 0, 0, -100, -788)
 }
-point_count = 2
+point_count = 3
 
 [node name="level3" instance=ExtResource("1_lfnxh")]
 
 [node name="TileMap" parent="." index="0"]
-tile_map_data = PackedByteArray("AAALAP7/AQADAAAAAAAKAP7/AQACAAAAAADw//3/AQACAAAAAADx//3/AQAAAAAAAADy//3/AQABAAAAAADz//3/AQADAAAAAAD9//n/AQAAAAAAAAD+//n/AQABAAAAAADt//v/AQACAAAAAADu//v/AQADAAAAAADw//b/AQAAAAAAAADx//b/AQABAAAAAAAAAPH/AQABAAAAAAABAPH/AQABAAAAAAACAPH/AQAAAAAAAAADAPH/AQAAAAAAAAAEAPH/AQAAAAAAAAAEAPb/AQABAAAAAAADAPb/AQAAAAAAAAACAPL/AwAAAAAAAAACAPP/AwAAAAAAAAACAPT/AwAAAAAAAAACAPX/AwAAAAAAAAACAPb/AwAAAAAAAAAFAPT/AwAAAAAAAAAFAPX/AwAAAAAAAAAFAPb/AwAAAAAAAAAMAPH/AwAAAAAAAAANAPH/AwAAAAAAAAAKAPP/AwAAAAAAAAAKAPL/AwAAAAAAAAALAPH/AwAAAAAAAAAJAPX/AwAAAAAAAAAIAPX/AwAAAAAAAAAHAPX/AwAAAAAAAAAGAPX/AwAAAAAAAADs//H/AQACAAAAAADt//H/AQADAAAAAAAJAPP/AwAAAAAAAAAKAPH/AwAAAAAAAAAJAPT/AwAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAALAP7/AQADAAAAAAAKAP7/AQACAAAAAADw//3/AQACAAAAAADx//3/AQAAAAAAAADy//3/AQABAAAAAADz//3/AQADAAAAAAD9//n/AQAAAAAAAAD+//n/AQABAAAAAADt//v/AQACAAAAAADu//v/AQADAAAAAADw//b/AQAAAAAAAADx//b/AQABAAAAAAAAAPH/AQABAAAAAAABAPH/AQABAAAAAAACAPH/AQAAAAAAAAADAPH/AQAAAAAAAAAEAPH/AQAAAAAAAAACAPL/AwAAAAAAAAACAPP/AwAAAAAAAAACAPT/AwAAAAAAAAACAPX/AQACAAAAAAAFAPT/AwAAAAAAAAAFAPX/AQABAAAAAAAMAPH/AwAAAAAAAAANAPH/AwAAAAAAAAAKAPP/AwAAAAAAAAAKAPL/AwAAAAAAAAALAPH/AwAAAAAAAAAJAPX/AQADAAAAAAAIAPX/AQABAAAAAAAHAPX/AQABAAAAAAAGAPX/AQAAAAAAAADs//H/AQACAAAAAADt//H/AQADAAAAAAAJAPP/AwAAAAAAAAAKAPH/AwAAAAAAAAAJAPT/AwAAAAAAAAADAPX/AQAAAAAAAAAEAPX/AQABAAAAAAA=")
 
 [node name="BombSpawner" parent="Entities" index="0" instance=ExtResource("2_hldmh")]
 position = Vector2(616, -25)
@@ -44,5 +45,15 @@ switch = NodePath("../../PressurePlate")
 [node name="Path2D2" type="Path2D" parent="Entities" index="4"]
 curve = SubResource("Curve2D_bmgug")
 
-[node name="MovingPlatformReady" parent="Entities/Path2D2" index="0" instance=ExtResource("4_bmgug")]
-position = Vector2(-582, -781)
+[node name="MovingPlatformReady" parent="Entities/Path2D2" index="0" node_paths=PackedStringArray("switch") instance=ExtResource("4_bmgug")]
+position = Vector2(-888, -656)
+switch = NodePath("PressurePlate")
+
+[node name="PressurePlate" parent="Entities/Path2D2/MovingPlatformReady" index="1" instance=ExtResource("3_gew73")]
+position = Vector2(0, -22)
+
+[node name="PortalPressurePlate" parent="Entities" index="5" instance=ExtResource("3_gew73")]
+position = Vector2(163, -501)
+
+[node name="Breakable" parent="Entities" index="6" instance=ExtResource("5_20opy")]
+position = Vector2(161, -517)

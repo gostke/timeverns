@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://6ci323i4f7tr"]
+[gd_scene load_steps=19 format=3 uid="uid://6ci323i4f7tr"]
 
 [ext_resource type="Script" uid="uid://4jgqfk4bgoa3" path="res://items/bomb.gd" id="1_lnnoo"]
-[ext_resource type="Texture2D" uid="uid://b05d5csjw8ghq" path="res://sprites/OBJECTS.png" id="2_lnnoo"]
+[ext_resource type="Texture2D" uid="uid://ddw8ctvq4ah5t" path="res://sprites/OBJECTS.png" id="2_lnnoo"]
+[ext_resource type="Texture2D" uid="uid://b5nu2uby7vjgs" path="res://sprites/TRAPDOORS_EXPLOSION_ORES.png" id="3_tqfld"]
+[ext_resource type="Script" uid="uid://b07ayp7ge87f1" path="res://items/boom.gd" id="4_6uah4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lnnoo"]
 atlas = ExtResource("2_lnnoo")
@@ -30,19 +32,10 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_tqfld")
 }, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tqfld")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tqfld")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6uah4")
-}, {
-"duration": 1.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_6uah4")
 }, {
 "duration": 1.0,
@@ -55,22 +48,6 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_amjlg"]
 radius = 14.0
-
-[sub_resource type="Animation" id="Animation_lnnoo"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
 
 [sub_resource type="Animation" id="Animation_tqfld"]
 length = 0.001
@@ -98,10 +75,38 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boom:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"boom"]
+}
+
+[sub_resource type="Animation" id="Animation_lnnoo"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_6uah4"]
 resource_name = "lit"
-length = 6.0000167
+length = 8.0
 loop_mode = 1
 step = 0.083333336
 tracks/0/type = "value"
@@ -123,10 +128,22 @@ tracks/1/path = NodePath("AnimatedSprite2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3, 3.1666667, 3.3333335, 3.5000002, 3.6666667, 3.8333335, 4, 4.166667, 4.3333335, 4.5, 4.6666665, 4.8333335, 5, 5.0833335, 5.166667, 5.25, 5.3333335, 5.416667, 5.5, 5.5833335, 5.6666665, 5.75, 5.8333335, 5.9166665, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.2500002, 3.416667, 3.5833337, 3.7500002, 3.916667, 4.0833335, 4.2500005, 4.416667, 4.5833335, 4.75, 4.9166665, 5.0833335, 5.3333335, 5.5, 5.6666665, 5.8333335, 6, 6.1666665, 6.3333335, 6.5, 6.583333, 6.6666665, 6.7499995, 6.8333335, 6.9166665, 7, 7.0833335, 7.166667, 7.25, 7.3333335, 7.416667, 7.5, 7.5833335, 7.6666665, 7.75, 7.8333335, 7.9166665, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(4, 2), Vector2(-4, -3), Vector2(4, 2), Vector2(-4, -3), Vector2(4, 2), Vector2(-4, -3)]
+"values": [Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(-1, -1), Vector2(0, 0), Vector2(4, 2), Vector2(-4, -3), Vector2(4, 2), Vector2(-4, -3), Vector2(4, 2), Vector2(-4, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boom:animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"boom"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqfld"]
@@ -135,6 +152,31 @@ _data = {
 &"idle": SubResource("Animation_lnnoo"),
 &"lit": SubResource("Animation_6uah4")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_marvc"]
+atlas = ExtResource("3_tqfld")
+region = Rect2(1558, 250, 309, 333)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp4o5"]
+atlas = ExtResource("3_tqfld")
+region = Rect2(1866, 250, 196, 330)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qlhj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_marvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp4o5")
+}],
+"loop": false,
+"name": &"boom",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uah4"]
+radius = 30.265491
 
 [node name="Bomb" type="RigidBody2D"]
 collision_layer = 4
@@ -150,7 +192,7 @@ autoplay = "idle"
 shape = SubResource("CircleShape2D_amjlg")
 
 [node name="Fuze" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 8.0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -159,4 +201,23 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="Boom" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 1
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_qlhj2")
+animation = &"boom"
+autoplay = "boom"
+script = ExtResource("4_6uah4")
+
+[node name="ExplosionRadius" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+shape = SubResource("CircleShape2D_6uah4")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+
 [connection signal="timeout" from="Fuze" to="." method="_on_fuze_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Boom" to="Boom" method="_on_animation_finished"]
