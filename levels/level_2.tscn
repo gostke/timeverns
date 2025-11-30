@@ -11,17 +11,19 @@ position = Vector2(-623, -133)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 next_level_id = 3
-switch = NodePath("../Entities/PressurePlate")
+switch = NodePath("../PressurePlate")
+
+[node name="PressurePlate" parent="." index="1" instance=ExtResource("3_v5uil")]
+position = Vector2(155, -7)
 
 [node name="Human" parent="Entities" index="0"]
 position = Vector2(-384, -3)
-speed = null
 
-[node name="PressurePlate" parent="Entities" index="1" instance=ExtResource("3_v5uil")]
-position = Vector2(-127, -10)
-
-[node name="TileMap" parent="." index="3"]
-tile_map_data = PackedByteArray("AAABAP//AQAEAAAAAAABAP7/AQAEAAAAAAABAP3/AQAEAAAAAAABAPz/AQAEAAAAAAACAPz/AQAEAAAAAAADAPz/AQAEAAAAAAAEAPz/AQAEAAAAAAAFAPz/AQAEAAAAAAAGAPz/AQAEAAAAAAA=")
+[node name="TileMap" parent="." index="4"]
+tile_map_data = PackedByteArray("AAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAACAP3/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAA=")
 
 [node name="Sprite2D" parent="Decorations/Background3" index="0"]
 position = Vector2(-252, -78)
+
+[node name="PressurePlate2" parent="." index="8" instance=ExtResource("3_v5uil")]
+position = Vector2(-145, -6)
